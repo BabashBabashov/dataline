@@ -1,0 +1,116 @@
+"use client"
+
+import Image from "next/image"
+import Link from "next/link"
+import { Plus, ChevronLeft, ChevronRight } from "lucide-react"
+import { useState, useEffect } from "react"
+
+const slides = [
+  { image: "/images/body1.jpg", alt: "Yanğın təhlükəsizliyi sistemi" },
+  { image: "/images/body2.jpg", alt: "Səs sistemi" },
+  { image: "/images/body3.jpg", alt: "Çağrı sistemi" },
+]
+
+export function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
+  }
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <section className="relative">
+      {/* Background Image Carousel with navy bottom strip */}
+      <div className="relative h-[450px] md:h-[550px]">
+        <Image
+          src={slides[currentSlide].image}
+          alt={slides[currentSlide].alt}
+          fill
+          className="object-cover object-top"
+          priority
+        />
+        <div className="absolute inset-0 bg-primary/5" />
+        
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          aria-label="Əvvəlki slayd"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-primary rounded-full flex items-center justify-center transition-colors shadow-lg"
+        >
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          aria-label="Növbəti slayd"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-primary rounded-full flex items-center justify-center transition-colors shadow-lg"
+        >
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
+
+        {/* Dots Indicator */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`${index + 1}. slayd`}
+              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors ${
+                index === currentSlide ? "bg-white" : "bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Navy strip that the card will overlap */}
+      <div className="h-16 bg-primary" />
+
+      {/* Overlapping Content Card - positioned absolutely to span both sections */}
+      <div className="absolute left-0 right-0 top-[240px] md:top-[280px] z-10 pointer-events-none">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center md:justify-end pointer-events-auto">
+            <div className="bg-background max-w-lg w-full shadow-xl">
+              <div className="p-8 md:p-10 text-center">
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-6 text-balance">
+                  Yanğın Təhlükəsizliyi
+                  <br />& Texniki Həllər
+                </h1>
+
+                <div className="w-16 h-0.5 bg-primary mb-6 mx-auto" />
+
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Dataline MMC olaraq, beynəlxalq standartlara uyğun, müasir və etibarlı yanğın sosnalizasiya, yanğınsöndürmə, səs, musiqi və çağrı sistemlərinin layihələndirilməsi, quraşdırılması və texniki xidməti sahəsində peşəkar həllər təqdim edirik. Məqsədimiz — insan həyatının, əmlakın və biznesinizin fasiləsiz fəaliyyətinin qorunmasını təmin etməkdir.
+                </p>
+              </div>
+
+              {/* Button row attached to bottom of card */}
+              <div className="flex justify-center">
+                <Link
+                  href="#services"
+                  className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-6 py-3 text-sm font-medium hover:bg-accent/90 transition-colors"
+                >
+                  <span className="flex items-center justify-center w-6 h-6 bg-primary text-primary-foreground">
+                    <Plus className="h-4 w-4" />
+                  </span>
+                  Daha çox öyrən
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Spacer to account for overlapping card on mobile/desktop */}
+      <div className="h-[280px] md:h-[240px]" />
+    </section>
+  )
+}
