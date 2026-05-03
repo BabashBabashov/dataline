@@ -2,37 +2,31 @@ import Link from "next/link"
 
 const topServices = [
   {
-    title: "Cloud Solutions",
-    description:
-      "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click \"Edit Text\" or double click me.",
+    title: "IT Autsorsinq",
+    description: "IT xidmətlərinin dəyəri daimi işçinin əmək haqqından daha aşağıdır. Vergi ödəmək lazım deyil.",
   },
   {
-    title: "Managed IT Services",
-    description:
-      "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click \"Edit Text\" or double click me.",
+    title: "Server otaqları",
+    description: "IT avadanlıqlarının təhlükəsiz və fasiləsiz fəaliyyəti üçün optimal mühit.",
   },
   {
-    title: "Disaster Recovery",
-    description:
-      "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click \"Edit Text\" or double click me.",
+    title: "Serverlərin qurulması",
+    description: "İnternet çıxışı, e-poçt və məlumatların idarə olunması.",
   },
 ]
 
 const bottomServices = [
   {
-    title: "Cloud Desktop",
-    description:
-      "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click \"Edit Text\" or double click me.",
+    title: "Serverlərin idarə olunması",
+    description: "Peşəkar komanda tərəfindən serverlərin və sistemin idarə olunması.",
   },
   {
-    title: "Network Solutions",
-    description:
-      "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click \"Edit Text\" or double click me.",
+    title: "Şəbəkələrin qurulması",
+    description: "Sürətli və təhlükəsiz İT şəbəkə həlləri.",
   },
   {
-    title: "Support Consulting",
-    description:
-      "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click \"Edit Text\" or double click me.",
+    title: "Şəbəkələrin idarəsi",
+    description: "LAN/WAN şəbəkəsi və İT infrastrukturunun dizaynı və quraşdırılması.",
   },
 ]
 
@@ -66,10 +60,10 @@ function ServiceCard({
           {description}
         </p>
         <Link
-          href="#"
+          href="/services"
           className="inline-flex items-center text-accent text-sm font-medium hover:underline"
         >
-          <span className="mr-1">+</span> Learn More
+          <span className="mr-1">+</span> Ətraflı
         </Link>
       </div>
     </div>
@@ -84,15 +78,10 @@ export function ServicesSection() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-              Our Services
+              XİDMƏTLƏR
             </h2>
             <p className="text-primary-foreground/80 text-sm max-w-xl leading-relaxed">
-              I&apos;m a paragraph.{" "}
-              <Link href="#" className="text-accent hover:underline">
-                Click here to add your own text and edit me.
-              </Link>
-              <br />
-              It&apos;s easy. Just click &quot;Edit Text&quot; or double click me.
+              Dataline MMC olaraq, peşəkar İT həlləri, yanğın təhlükəsizliyi sistemləri və səs sistemləri sahəsində keyfiyyətli xidmətlər təqdim edirik.
             </p>
           </div>
         </div>
