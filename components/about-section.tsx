@@ -3,16 +3,16 @@ import { CheckCircle2, Users, Award, TrendingUp } from "lucide-react"
 
 export function AboutSection() {
   const stats = [
-    { icon: Users, value: "500+", label: "Happy Clients" },
-    { icon: Award, value: "15+", label: "Years Experience" },
-    { icon: TrendingUp, value: "98%", label: "Success Rate" },
+    { icon: Users, value: "500+", label: "Məmnun Müştəri" },
+    { icon: Award, value: "10+", label: "İl Təcrübə" },
+    { icon: TrendingUp, value: "98%", label: "Uğur Nisbəti" },
   ]
 
   const features = [
-    "Expert team of certified IT professionals",
-    "24/7 dedicated customer support",
-    "Customized solutions for your business",
-    "Industry-leading security standards",
+    "Sertifikatlı peşəkar İT mütəxəssisləri komandası",
+    "24/7 müştəri dəstəyi xidməti",
+    "Biznesiniz üçün fərdi həllər",
+    "Sənayedə aparıcı təhlükəsizlik standartları",
   ]
 
   return (
@@ -24,7 +24,7 @@ export function AboutSection() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <Image
                 src="/images/about-team.jpg"
-                alt="Our professional IT consulting team"
+                alt="Peşəkar İT məsləhətçi komandamız"
                 fill
                 className="object-cover"
               />
@@ -38,17 +38,17 @@ export function AboutSection() {
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <div className="h-px w-12 bg-accent" />
-              <span className="text-accent text-sm font-semibold tracking-widest uppercase">About Us</span>
+              <span className="text-accent text-sm font-semibold tracking-widest uppercase">HAQQIMIZDA</span>
             </div>
 
             <h2 className="text-4xl md:text-5xl font-serif text-primary text-balance leading-tight">
-              Empowering Businesses Through Technology
+              Texnologiya ilə Biznesinizin İnkişafı
             </h2>
 
             <p className="text-muted-foreground leading-relaxed text-pretty">
-              At ITG, we believe that technology should empower your business, not complicate it. For over 15 years,
-              we&apos;ve been helping companies of all sizes navigate the complex world of IT with confidence and clarity.
-              Our mission is to deliver innovative, reliable, and scalable solutions that drive real business results.
+              Dataline MMC olaraq, texnologiyaların biznesinizə güc qatmalı, deyil, məsələlər yaradmalıdır düşüncəsindəyik. 2015-ci ildən bəri,
+              müxtəlif ölçülü şirkətlərin İT dünyasında etibarlı və təhlükəsiz şəkildə istiqamətlənməsinə kömək edirik.
+              Məqsədimiz - innovativ, etibarlı və ölçülə bilən həllər təqdim etməklə real biznes nəticələri əldə etməkdir.
             </p>
 
             <ul className="flex flex-col gap-3">

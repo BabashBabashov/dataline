@@ -6,21 +6,21 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 const testimonials = [
   {
     quote:
-      "I'm a testimonial. Click to edit me and add text that says something nice about you and your services.",
-    name: "Jason Strauss",
-    title: "CEO of ML Associates",
+      "Dataline MMC ilə əməkdaşlıq bizim üçün böyük uğur oldu. Peşəkar komanda və keyfiyyətli xidmətləri sayəsində biznesimiz daha səmərəli işləyir.",
+    name: "Əli Vəliyev",
+    title: "CEO, Tech Solutions AZ",
   },
   {
     quote:
-      "I'm a testimonial. Click to edit me and add text that says something nice about you and your services.",
-    name: "Sarah Mitchell",
-    title: "CTO of TechFlow Inc.",
+      "Yanğın təhlükəsizliyi sistemlərinin quraşdırılmasında göstərdikləri peşəkar yanaşma və operativlik üçün təşəkkür edirik. Etibarlı tərəfdaşdır.",
+    name: "Ləman Həsənova",
+    title: "Direktor, Bina Menecment",
   },
   {
     quote:
-      "I'm a testimonial. Click to edit me and add text that says something nice about you and your services.",
-    name: "David Chen",
-    title: "Director at InnovateCorp",
+      "İT infrastrukturumuzun qurulmasında Dataline MMC-nin töhfələri əvəzsizdir. Hər zaman dəstək və həllər üçün yaxınınızdaylar.",
+    name: "Rəşad Məmmədov",
+    title: "CTO, Digital Group",
   },
 ]
 
@@ -41,7 +41,7 @@ export function TestimonialsSection() {
     <section className="bg-secondary py-16 md:py-24 relative">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-xl md:text-2xl text-primary font-medium mb-8 md:mb-12">
-          Testimonials
+          RƏYLƏR
         </h2>
 
         <div className="relative max-w-4xl mx-auto">

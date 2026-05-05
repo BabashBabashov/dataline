@@ -15,7 +15,7 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Form submitted:", formData)
+    console.log("[Dataline MMC] Form göndərildi:", formData)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -30,7 +30,7 @@ export function ContactSection() {
     <section id="contact" className="bg-primary py-20 md:py-28">
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-serif text-primary-foreground text-center mb-12">Contact Us</h2>
+        <h2 className="text-4xl md:text-5xl font-serif text-primary-foreground text-center mb-12">ƏLAQƏ</h2>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
@@ -38,7 +38,7 @@ export function ContactSection() {
           <div className="grid gap-8 md:grid-cols-2">
             <div className="flex flex-col gap-2">
               <label htmlFor="firstName" className="text-primary-foreground text-sm font-semibold">
-                First Name <span className="text-accent">*</span>
+                Ad <span className="text-accent">*</span>
               </label>
               <input
                 id="firstName"
@@ -53,7 +53,7 @@ export function ContactSection() {
 
             <div className="flex flex-col gap-2">
               <label htmlFor="lastName" className="text-primary-foreground text-sm font-semibold">
-                Last Name <span className="text-accent">*</span>
+                Soyad <span className="text-accent">*</span>
               </label>
               <input
                 id="lastName"
@@ -70,7 +70,7 @@ export function ContactSection() {
           {/* Email */}
           <div className="flex flex-col gap-2">
             <label htmlFor="email" className="text-primary-foreground text-sm font-semibold">
-              Email <span className="text-accent">*</span>
+              E-poçt <span className="text-accent">*</span>
             </label>
             <input
               id="email"
@@ -86,7 +86,7 @@ export function ContactSection() {
           {/* Message */}
           <div className="flex flex-col gap-2">
             <label htmlFor="message" className="text-primary-foreground text-sm font-semibold">
-              Message
+              Mesaj
             </label>
             <textarea
               id="message"
@@ -104,7 +104,7 @@ export function ContactSection() {
               type="submit"
               className="text-primary-foreground text-xl font-serif hover:text-accent transition-colors px-8 py-2"
             >
-              Submit
+              Göndər
             </button>
           </div>
         </form>
@@ -112,23 +112,20 @@ export function ContactSection() {
         {/* Contact info */}
         <div className="mt-20 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-primary-foreground text-sm">
           <p>
-            <span className="font-semibold">Address.</span> 500 Terry Francine Street, San Francine, CA 94158
+            <span className="font-semibold">Ünvan.</span> Bakı şəhəri, Azərbaycan
           </p>
           <p>
-            <span className="font-semibold">Tel.</span> 123-456-7890
+            <span className="font-semibold">Tel.</span> +994 50 123 45 67
           </p>
           <p>
-            <span className="font-semibold">Email.</span> info@mysite.com
+            <span className="font-semibold">Email.</span> info@dataline.az
           </p>
         </div>
 
         {/* Footer bottom */}
         <div className="mt-12 flex items-center justify-between text-primary-foreground/80 text-sm">
           <p>
-            &copy; 2026 by ITG. Powered and secured by{" "}
-            <a href="#" className="underline hover:text-primary-foreground">
-              ITG
-            </a>
+            &copy; 2026 Dataline MMC. Bütün hüquqlar qorunur.
           </p>
           <button
             onClick={scrollToTop}
