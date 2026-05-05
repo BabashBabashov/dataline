@@ -81,21 +81,20 @@ export function HeroSection() {
             <div className="bg-background max-w-lg w-full shadow-xl">
               <div className="p-8 md:p-10 text-center">
                 <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-6 text-balance">
-                  Yanğın Təhlükəsizliyi
-                  <br />& Texniki Həllər
+                  Dataline xoş gəlmisiniz!
                 </h1>
 
                 <div className="w-16 h-0.5 bg-primary mb-6 mx-auto" />
 
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Dataline MMC olaraq, beynəlxalq standartlara uyğun, müasir və etibarlı yanğın sosnalizasiya, yanğınsöndürmə, səs, musiqi və çağrı sistemlərinin layihələndirilməsi, quraşdırılması və texniki xidməti sahəsində peşəkar həllər təqdim edirik. Məqsədimiz — insan həyatının, əmlakın və biznesinizin fasiləsiz fəaliyyətinin qorunmasını təmin etməkdir.
+                  2015-ci ildə yaradılmış Dataline şirkəti qısa müddət ərzində İT autsorsinq, İT xidmətlərinin göstərilməsi, sistem inteqrasiyası, serverlərin qurulması, nəzarət sistemləri, kommunikasiya üzrə ixtisaslaşıb və öz müştərilərinə xidmət göstərməkdədir. Şirkətimiz yüksək ixtisaslı təcrübəli gənc mütəxəssislərdən təşkil olunmuşdur. Şirkətimizin əsas məqsədi müştərilərə keyfiyyətli İT autsorsinq təklif etməkdir.
                 </p>
               </div>
 
               {/* Button row attached to bottom of card */}
               <div className="flex justify-center">
                 <Link
-                  href="#services"
+                  href="/services"
                   className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-6 py-3 text-sm font-medium hover:bg-accent/90 transition-colors"
                 >
                   <span className="flex items-center justify-center w-6 h-6 bg-primary text-primary-foreground">

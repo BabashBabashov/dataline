@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { ContactSection } from "@/components/contact-section"
 
 export default function ServicesPage() {
@@ -28,8 +29,11 @@ export default function ServicesPage() {
               <div className="bg-background max-w-2xl w-full shadow-xl">
                 <div className="p-10 md:p-14 text-center">
                   <h1 className="text-3xl md:text-5xl font-bold text-primary leading-tight text-balance">
-                    Nəyə Görə Biz?
+                    XİDMƏTLƏR
                   </h1>
+                  <p className="text-muted-foreground text-sm mt-4">
+                    Peşəkar həllər və keyfiyyətli xidmətlər
+                  </p>
                 </div>
               </div>
             </div>
@@ -54,70 +58,93 @@ export default function ServicesPage() {
             {[
               {
                 title: "IT Autsorsinq",
-                description: "IT Autsorsinq xidmətlərinin dəyəri, daimi işçinin əmək haqqından daha aşağıdır. Ofisdə daimi işçi üçün yer ayırmağa ehtiyac yoxdur. Əmək müqaviləsi bağlamırsınız. Əmək haqqından vergi ödəmirsiniz"
+                slug: "it-autsorsinq",
+                description: "İT xidmətlərinin dəyəri daimi işçinin əmək haqqından daha aşağıdır. Ofisdə daimi işçi üçün yer ayırmağa ehtiyac yoxdur. Əmək müqaviləsi bağlamırsınız. Əmək haqqından vergi ödəmirsiniz.\n\nBiz sizin üçün səmərəli həll."
               },
               {
-                title: "Server otaqlarının qurulması",
-                description: "IT sistemi təşkil edən bütün avadanlıqların və serverlərin təhlükəsiz, etibarlı və fasiləsiz fəaliyyətini təmin etmək üçün istifadə olunur. Server otağında optimal mühitin yaradılması üçün aşağıdakı göstəricilər nəzərə alınmalıdır"
+                title: "Server otaqları",
+                slug: "server-otaqlari",
+                description: "İT sistemini təşkil edən bütün avadanlıqların və serverlərin təhlükəsiz fəaliyyəti üçün istifadə olunur. Server otağında optimal mühitin yaradılması üçün xüsusi göstəricilər nəzərə alınmalıdır.\n\nBiz peşəkar yanaşma təklif edirik."
               },
               {
                 title: "Serverlərin qurulması",
-                description: "İstifadəçilərin İNTERNET şəbəkəsinə çıxışının təmin olunması və idarə edilməsi, elektron məktubların göndərilməsi və qabul edilməsi, məlumatların saxlanılması və onlardan istifadə qaydalarının müəyyən edilməsi kimi işləri yerinə yetirir"
+                slug: "serverlerin-qurulmasi",
+                description: "İstifadəçilərin İNTERNET şəbəkəsinə çıxışının təmin olunması və idarə edilməsi. Elektron məktubların göndərilməsi və qabul edilməsi. Məlumatların saxlanılması və idarə olunması.\n\nTam həll təklif edirik."
               },
               {
-                title: "Serverlərin idarə olunması",
-                description: "Dataline şirkətinin Texniki Dəstək Qrupunda serverlərin və sistem proqram təminatının idarə olunması üzrə ixtisaslaşmış, zəngin bilik və təcrübəyə malik peşəkarlar fəaliyyət göstərir"
+                title: "Serverlərin idarəsi",
+                slug: "serverlerin-idaresi",
+                description: "Texniki Dəstək Qrupunda serverlərin və sistem proqram təminatının idarə olunması üzrə ixtisaslaşmış peşəkarlar fəaliyyət göstərir. Zəngin bilik və təcrübə.\n\n7/24 dəstək xidməti."
               },
               {
                 title: "Şəbəkələrin qurulması",
-                description: "Bildiyiniz kimi dünya artıq internet vasitəsi ilə çox kiçik hala düşüb, istədiyiniz vaxt istədiyiniz məlumatı ala bilirsiniz. Bunun üçün sizin İT şəbəkəniz sürətli və təhlükəsiz olmalıdır"
+                slug: "sebekelerin-qurulmasi",
+                description: "Dünya artıq internet vasitəsi ilə çox kiçik hala düşüb. İstədiyiniz vaxt istədiyiniz məlumatı ala bilirsiniz. Bunun üçün İT şəbəkəniz sürətli və təhlükəsiz olmalıdır.\n\nBiz sizi qoruyuruq."
               },
               {
-                title: "Şəbəkələrin idarə olunması",
-                description: "LAN/WAN şəbəkəsi və İT infrastrukturunun dizaynı, quraşdırılması və yaranan problemlərin aradan qaldırılması"
+                title: "Şəbəkələrin idarəsi",
+                slug: "sebekelerin-idaresi",
+                description: "LAN/WAN şəbəkəsi və İT infrastrukturunun dizaynı və quraşdırılması. Yaranan problemlərin aradan qaldırılması və texniki dəstək.\n\nSürətli həll üsulları."
               },
               {
-                title: "WEB səhifələrin yaradılması",
-                description: "Biz sifarişçilərimizin tələb və istəkləri əsasında, onların fəaliyyət sahələrinin əsas elementlərini nəzərə çarpdıran orijinal və yüksək zövqlü veb-saytların yaradılması üzrə tam xidmətlər kompleksini təklif edirik"
+                title: "WEB səhifələr",
+                slug: "web-sehifeler",
+                description: "Sifarişçilərimizin tələb və istəkləri əsasında, onların fəaliyyət sahələrinin əsas elementlərini nəzərə çarpdıran orijinal və yüksək zövqlü veb-saytların yaradılması.\n\nMüasir dizayn həlləri."
               },
               {
                 title: "Texniki dəstək",
-                description: "Kompüterlərin etibarlı və fasiləsiz işi, təşkilatın uğurlu fəaliyyəti üçün vacib şərtdir. Bu gün kompüterlər çoxlu sayda funksiyaları icra edirlər və onların xarab olması satış şöbəsinin, mühasibatlığın və hətta bütün təşkilatın faəliyyətini ən uyğun olmayan anda dayandıra bilər"
+                slug: "texniki-destek",
+                description: "Kompüterlərin etibarlı və fasiləsiz işi, təşkilatın uğurlu fəaliyyəti üçün vacib şərtdir. Bu gün kompüterlər çoxlu sayda funksiyaları icra edirlər.\n\nBiz hər zaman yanınızdayıq."
               },
               {
-                title: "Yanğın siqnalizasiya sistemləri",
-                description: "• Avtomatik tüstü və istilik detektorları\n• Ünvanlı və ünvanlı olmayan sistemlər\n• Səsli və işıqlı xəbərdarlıq qurğuları\n• Mərkəzi idarəetmə panelləri"
+                title: "Yanğın siqnalizasiya",
+                slug: "yanigin-siqnalizasiya",
+                description: "Avtomatik tüstü və istilik detektorlarının quraşdırılması. Ünvanlı və ünvanlı olmayan sistemlərin tətbiqi. Səsli və işıqlı xəbərdarlıq qurğuları.\n\nMərkəzi idarəetmə panelləri ilə."
               },
               {
-                title: "Yanğınsöndürmə sistemləri",
-                description: "• Sprinkler sistemləri\n• Qazlı söndürmə sistemləri (server otaqları üçün ideal)\n• Köpüklü və su əsaslı sistemlər\n• Avtomatik və manual aktivasiya mexanizmləri\n\nYanğından mühafizə sistemləri yalnız qanunvericiliyin tələbi deyil, eyni zamanda biznesinizin və əməkdaşlarınızın təhlükəsizliyinin təminatıdır."
+                title: "Yanğınsöndürmə",
+                slug: "yaniginsondurme",
+                description: "Sprinkler sistemlərinin quraşdırılması. Qazlı söndürmə sistemləri (server otaqları üçün ideal). Köpüklü və su əsaslı sistemlər. Avtomatik və manual aktivasiya.\n\nTəhlükəsizlik standartlarına uyğun."
               },
               {
-                title: "Peşəkar səs sistemləri",
-                description: "• Gücləndirici (usilitel) sistemlərinin quraşdırılması\n• Akustik kolon və subwoofer sistemləri\n• Mikser və DSP avadanlıqlarının sazlanması\n• Konfrans və tədbir məkanları üçün səsləndirmə həlləri"
+                title: "Səs sistemləri",
+                slug: "ses-sistemleri",
+                description: "Gücləndirici sistemlərin quraşdırılması. Akustik kolon və subwoofer sistemləri. Mikser və DSP avadanlıqlarının sazlanması. Konfrans və tədbirlər üçün həllər.\n\nYüksək keyfiyyətli səs."
+              },
+              {
+                title: "Səs sistemlərinin qurulması",
+                slug: "ses-sistemlerinin-qurulmasi",
+                description: "Peşəkar səs sistemlərinin layihələndirilməsi və quraşdırılması. Akustik hesablamalar və optimal avadanlıq seçimi. Müxtəlif məkanlar üçün fərdi həllər.\n\nTəcrübəli komanda ilə."
+              },
+              {
+                title: "Nəzarət sistemləri (Kamera)",
+                slug: "nazaret-sistemleri-kamera",
+                description: "Kamera video müşahidə sistemlərinin qurulması. Analoq, Wifi, İP və PTZ kameralar. DVR və NVR qurğuları. İnternet üzərindən istənilən nöqtədən nəzarət.\n\nMüasir texnologiya ilə."
+              },
+              {
+                title: "Nəzarət sistemləri (Keçid)",
+                slug: "nazaret-sistemleri-kecid",
+                description: "Biometrik sistemlər, kartlı keçid, barmaq izi və üz tanıma. Turniket və şlaqbaum sistemləri. Personalın giriş-çıxışına nəzarət və hesabatlar.\n\nTam avtomatlaşdırılmış həll."
+              },
+              {
+                title: "Mini ATS və İP telefoniya",
+                slug: "mini-ats-ip-telefoniya",
+                description: "Müasir mini ATS və İP telefoniya sistemləri. Dünyanın hər yerindən ofislərlə əlaqə. Daxili nömrələr və rahat rabitə. Yüksək keyfiyyətli quraşdırılma.\n\nHəmişə əlaqədə qalın."
               }
             ].map((service, index) => (
-              <div key={index} className="bg-secondary rounded-lg shadow-lg overflow-hidden">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-                  {/* Image Section */}
-                  <div className="md:col-span-1 aspect-video md:aspect-square bg-muted relative">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <svg className="w-16 h-16 text-muted-foreground/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                  </div>
-                  
-                  {/* Content Section */}
-                  <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-center">
-                    <h3 className="text-xl md:text-2xl font-bold text-primary mb-4">
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
+              <div key={index} className="bg-secondary rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+                <h3 className="text-lg font-bold text-primary mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line mb-4">
+                  {service.description}
+                </p>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="inline-flex items-center gap-2 text-accent text-sm font-medium hover:underline"
+                >
+                  <span className="text-lg">+</span> Daha çox öyrən
+                </Link>
               </div>
             ))}
           </div>
