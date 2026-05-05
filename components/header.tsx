@@ -10,7 +10,7 @@ const navItems = [
   { label: "ANA SƏHİFƏ", href: "/" },
   { label: "NİYƏ BİZ", href: "/about" },
   { label: "XİDMƏTLƏR", href: "/services" },
-  { label: "PORTFEL", href: "/industries" },
+  { label: "PORTFEL", href: "/portfolio" },
   { label: "ƏLAQƏ", href: "/#contact" },
 ]
 
@@ -19,7 +19,7 @@ export function Header() {
   const pathname = usePathname()
 
   const isActive = (href: string) => {
-    if (href === "/industries") return pathname === "/industries"
+    if (href === "/portfolio") return pathname === "/portfolio"
     return false
   }
 
