@@ -110,16 +110,21 @@ export function ContactSection() {
         </form>
 
         {/* Contact info */}
-        <div className="mt-20 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-primary-foreground text-sm">
-          <p>
-            <span className="font-semibold">Ünvan.</span> Bakı şəhəri, Azərbaycan
-          </p>
-          <p>
-            <span className="font-semibold">Tel.</span> +994 50 123 45 67
-          </p>
-          <p>
-            <span className="font-semibold">Email.</span> info@dataline.az
-          </p>
+        <div className="mt-20 flex flex-col items-center justify-center gap-4 text-primary-foreground text-sm">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold">Ünvan:</span> Ə.Rəcəbli str.25, N.Nərimanov
+          </div>
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold">Tel:</span> +994 12 408 35 35
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="font-semibold">Mob:</span> +994 70 707 47 37
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-semibold">Email:</span> info@dataline.az
+          </div>
         </div>
 
         {/* Footer bottom */}
