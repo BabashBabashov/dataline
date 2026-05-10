@@ -5,22 +5,49 @@ import { ContactSection } from "@/components/contact-section"
 export default function YangingsondurmePage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Page Title */}
-      <section className="bg-primary py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 mb-4">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Xidmətlərə geri
-            </Link>
-          </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground text-center">
-            Yanğınsöndürmə Sistemləri
-          </h1>
+      {/* Banner Section with Card Starting from Navy Strip Middle */}
+      <section className="relative">
+        {/* Banner Background */}
+        <div className="h-[220px] bg-gradient-to-br from-primary/20 to-primary/5" />
+        
+        {/* Blue Strip that card will overlap */}
+        <div className="h-40" style={{ backgroundColor: '#1A2B6D' }} />
+
+        {/* Back Link */}
+        <div className="absolute top-4 left-4 z-20">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-white hover:text-accent transition-colors bg-primary/50 backdrop-blur-sm px-4 py-2 rounded-lg"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Xidmətlərə geri
+          </Link>
         </div>
+
+        {/* Overlapping Service Card - Starting from middle of navy strip */}
+        <div className="absolute left-0 right-0 top-[280px] md:top-[300px] z-10 pointer-events-none">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-center pointer-events-auto">
+              <div className="relative max-w-3xl w-full">
+                {/* Offset Frame */}
+                <div className="absolute inset-0 translate-x-2 translate-y-2 border border-primary-foreground/40 pointer-events-none" aria-hidden="true" />
+                
+                {/* Card */}
+                <div className="relative bg-background p-12 md:p-16 shadow-xl">
+                  <h1 className="text-2xl md:text-4xl font-semibold mb-4 leading-tight text-balance" style={{ color: '#1A2B6D' }}>
+                    Yanğınsöndürmə Sistemləri
+                  </h1>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    Yanğından mühafizə sistemləri biznesinizin və əməkdaşlarınızın təhlükəsizliyinin təminatıdır. Risklərin minimuma endirilməsi üçün kompleks həllər təqdim edirik.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Spacer to account for overlapping card */}
+        <div className="h-[180px]" />
       </section>
 
       {/* Content Section */}
@@ -29,23 +56,14 @@ export default function YangingsondurmePage() {
 
           {/* Introduction */}
           <div className="bg-secondary p-8 md:p-10 rounded-lg shadow-lg mb-12">
-            <h2 className="text-xl font-bold text-primary mb-4">Təhlükəsizlik prioritetdir</h2>
             <p className="text-lg leading-relaxed text-foreground">
-              Yanğından mühafizə sistemləri yalnız qanunvericiliyin tələbi deyil, eyni zamanda biznesinizin və əməkdaşlarınızın təhlükəsizliyinin təminatıdır.
+              Dataline MMC olaraq biz sizə risklərin minimuma endirilməsi və maksimum təhlükəsizlik üçün kompleks həllər təqdim edirik.
             </p>
-            <div className="mt-6 p-4 bg-accent/10 rounded-lg border-l-4 border-accent">
-              <p className="text-primary font-semibold text-lg">
-                Dataline MMC olaraq biz sizə risklərin minimuma endirilməsi və maksimum təhlükəsizlik üçün kompleks həllər təqdim edirik.
-              </p>
-            </div>
           </div>
 
           {/* Fire Suppression Systems */}
           <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
-              Yanğınsöndürmə sistemləri
-            </h2>
-
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Yanğınsöndürmə sistemləri</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-primary/5 p-6 rounded-lg hover:bg-primary/10 transition-colors">
                 <div className="flex items-start gap-3">
@@ -55,12 +73,8 @@ export default function YangingsondurmePage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">
-                      Sprinkler sistemləri
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Avtomatik olaraq aktivləşən və yanğını söndürən su əsaslı sistemlər
-                    </p>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Sprinkler sistemləri</h3>
+                    <p className="text-muted-foreground text-sm">Avtomatik olaraq aktivləşən su əsaslı sistemlər</p>
                   </div>
                 </div>
               </div>
@@ -73,12 +87,8 @@ export default function YangingsondurmePage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">
-                      Qazlı söndürmə sistemləri
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Server otaqları üçün ideal, avadanlıqlara zərər verməyən qazlı həllər
-                    </p>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Qazlı söndürmə</h3>
+                    <p className="text-muted-foreground text-sm">Server otaqları üçün ideal, avadanlıqlara zərər verməyən həllər</p>
                   </div>
                 </div>
               </div>
@@ -91,12 +101,8 @@ export default function YangingsondurmePage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">
-                      Köpüklü və su əsaslı sistemlər
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Müxtəlif növ yanğınlar üçün effektiv köpüklü və su söndürmə sistemləri
-                    </p>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Köpüklü sistemlər</h3>
+                    <p className="text-muted-foreground text-sm">Müxtəlif növ yanğınlar üçün effektiv köpüklü həllər</p>
                   </div>
                 </div>
               </div>
@@ -109,12 +115,8 @@ export default function YangingsondurmePage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">
-                      Avtomatik və manual aktivasiya
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Həm avtomatik, həm də əl ilə aktivləşdirilə bilən mexanizmlər
-                    </p>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Avtomatik və manual</h3>
+                    <p className="text-muted-foreground text-sm">Həm avtomatik, həm də əl ilə aktivləşdirilən mexanizmlər</p>
                   </div>
                 </div>
               </div>
@@ -123,43 +125,20 @@ export default function YangingsondurmePage() {
 
           {/* Features */}
           <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
-              Sistemin üstünlükləri
-            </h2>
-
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Üstünlüklər</h2>
             <div className="space-y-4">
               {[
-                {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
-                  title: "Maksimum təhlükəsizlik",
-                  description: "Risklərin minimuma endirilməsi və əməkdaşların təhlükəsizliyinin təmini"
-                },
-                {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
-                  title: "Qanunvericiliyə uyğunluq",
-                  description: "Bütün sistemlər qanunvericilik tələblərinə tam uyğundur"
-                },
-                {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
-                  title: "Kompleks həllər",
-                  description: "Hər bir obyekt üçün fərdi yanaşma və optimal həllər"
-                },
-                {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
-                  title: "Peşəkar quraşdırma",
-                  description: "Təcrübəli mütəxəssislər tərəfindən düzgün quraşdırma və konfiqurasiya"
-                }
+                { icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />, title: "Maksimum təhlükəsizlik", description: "Risklərin minimuma endirilməsi" },
+                { icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />, title: "Qanunvericiliyə uyğunluq", description: "Bütün sistemlər qanunvericilik tələblərinə uyğundur" },
+                { icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />, title: "Kompleks həllər", description: "Hər bir obyekt üçün fərdi yanaşma" },
+                { icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />, title: "Peşəkar quraşdırma", description: "Təcrübəli mütəxəssislər tərəfindən quraşdırma" }
               ].map((feature, index) => (
                 <div key={index} className="bg-secondary p-6 rounded-lg">
                   <div className="flex items-start gap-3">
                     <div className="mt-0.5">{feature.icon}</div>
                     <div>
-                      <h3 className="text-lg font-semibold text-primary mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {feature.description}
-                      </p>
+                      <h3 className="text-lg font-semibold text-primary mb-2">{feature.title}</h3>
+                      <p className="text-muted-foreground">{feature.description}</p>
                     </div>
                   </div>
                 </div>
@@ -167,54 +146,9 @@ export default function YangingsondurmePage() {
             </div>
           </div>
 
-          {/* Applications */}
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
-              Tətbiq sahələri
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-primary/5 p-6 rounded-lg text-center">
-                <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-primary mb-2">Server otaqları</h3>
-                <p className="text-muted-foreground text-sm">
-                  Qazlı söndürmə sistemləri ilə avadanlıqların qorunması
-                </p>
-              </div>
-
-              <div className="bg-primary/5 p-6 rounded-lg text-center">
-                <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-primary mb-2">Ofis binaları</h3>
-                <p className="text-muted-foreground text-sm">
-                  Sprinkler sistemləri ilə tam müdafiə
-                </p>
-              </div>
-
-              <div className="bg-primary/5 p-6 rounded-lg text-center">
-                <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-primary mb-2">Sənaye obyektləri</h3>
-                <p className="text-muted-foreground text-sm">
-                  Xüsusi həllər ilə sənaye təhlükəsizliyi
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Call to Action */}
-          <div className="bg-accent/10 p-8 rounded-lg border-l-4 border-accent">
-            <p className="text-primary font-medium text-lg leading-relaxed">
+          {/* Commitment */}
+          <div className="bg-primary/5 p-6 rounded-lg border-l-4 border-accent">
+            <p className="text-primary font-medium">
               Yanğınsöndürmə sisteminiz üçün Dataline MMC-yə güvənə bilərsiniz. Peşəkar komandamız sizin üçün ən təhlükəsiz həlləri hazırlamağa hazırdır.
             </p>
           </div>

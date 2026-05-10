@@ -5,22 +5,49 @@ import { ContactSection } from "@/components/contact-section"
 export default function SebekelerinKurulmasiPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Page Title */}
-      <section className="bg-primary py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 mb-4">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Xidmətlərə geri
-            </Link>
-          </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground text-center">
-            Şəbəkələrin Qurulması
-          </h1>
+      {/* Banner Section with Card Starting from Navy Strip Middle */}
+      <section className="relative">
+        {/* Banner Background */}
+        <div className="h-[220px] bg-gradient-to-br from-primary/20 to-primary/5" />
+        
+        {/* Blue Strip that card will overlap */}
+        <div className="h-40" style={{ backgroundColor: '#1A2B6D' }} />
+
+        {/* Back Link */}
+        <div className="absolute top-4 left-4 z-20">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-white hover:text-accent transition-colors bg-primary/50 backdrop-blur-sm px-4 py-2 rounded-lg"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Xidmətlərə geri
+          </Link>
         </div>
+
+        {/* Overlapping Service Card - Starting from middle of navy strip */}
+        <div className="absolute left-0 right-0 top-[280px] md:top-[300px] z-10 pointer-events-none">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-center pointer-events-auto">
+              <div className="relative max-w-3xl w-full">
+                {/* Offset Frame */}
+                <div className="absolute inset-0 translate-x-2 translate-y-2 border border-primary-foreground/40 pointer-events-none" aria-hidden="true" />
+                
+                {/* Card */}
+                <div className="relative bg-background p-12 md:p-16 shadow-xl">
+                  <h1 className="text-2xl md:text-4xl font-semibold mb-4 leading-tight text-balance" style={{ color: '#1A2B6D' }}>
+                    Şəbəkələrin Qurulması
+                  </h1>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    Data Line sizə şəbəkə sistemlərinin ilkin hissəsi olan kabelləşmə işindən başlayaraq, ən üst cihazların sazlanmasına qədər olan bütün işləri tam, sürətli və təhlükəsiz şəkildə yerinə yetirir.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Spacer to account for overlapping card */}
+        <div className="h-[180px]" />
       </section>
 
       {/* Content Section */}
@@ -29,9 +56,8 @@ export default function SebekelerinKurulmasiPage() {
 
           {/* Introduction */}
           <div className="bg-secondary p-8 md:p-10 rounded-lg shadow-lg mb-12">
-            <h2 className="text-xl font-bold text-primary mb-4">Niyə sürətli və təhlükəsiz şəbəkə vacibdir?</h2>
             <p className="text-lg leading-relaxed text-foreground">
-              Bildiyiniz kimi dünya artıq internet vasitəsi ilə çox kiçik hala düşüb, istədiyiniz vaxt istədiyiniz məlumatı ala bilirsiniz. Bunun üçün sizin İT şəbəkəniz sürətli və təhlükəsiz olmalıdır. Data Line sizə bu mövzuda şəbəkə sistemlərinin ilkin hissəsi olan kabelləşmə işindən başlayaraq, ən üst cihazların sazlanmasına qədər olan bütün işləri tam, sürətli və təhlükəsiz şəkildə yerinə yetirə bilər.
+              İT şəbəkəniz sürətli və təhlükəsiz olmalıdır. Biz sertifikatlı mühəndislərimizlə layihələndirmədən təhvilə qədər tam xidmət göstəririk.
             </p>
           </div>
 
@@ -63,10 +89,6 @@ export default function SebekelerinKurulmasiPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
               Təklif edilən şəbəkə həlləri
             </h2>
-
-            <p className="text-muted-foreground mb-6">
-              Data Line aşağıdakı şəbəkə həllərini müştərilərə təklif edir:
-            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
@@ -121,71 +143,48 @@ export default function SebekelerinKurulmasiPage() {
             </h2>
 
             <div className="space-y-6">
-              {/* Step 1 */}
-              <div className="bg-secondary p-6 rounded-lg">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-accent-foreground font-bold text-xl">1</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">Layihələndirmə</h3>
-                    <p className="text-foreground leading-relaxed">
-                      Sertifikatlı mühəndislərimiz tərəfindən şəbəkə sisteminin professional şəkildə layihələndirilməsi
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="bg-secondary p-6 rounded-lg">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-accent-foreground font-bold text-xl">2</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">Razılaşma</h3>
-                    <p className="text-foreground leading-relaxed">
-                      Layihənin təqdim edilməsi və müştərinin razılığının alınması
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="bg-secondary p-6 rounded-lg">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-accent-foreground font-bold text-xl">3</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">İcra</h3>
-                    <p className="text-foreground leading-relaxed">
-                      Kabelləşmə işindən başlayaraq avadanlıqların sazlanmasına qədər olan bütün işlərin operativ şəkildə icrası
-                    </p>
+              {[
+                {
+                  step: "1",
+                  title: "Layihələndirmə",
+                  description: "Sertifikatlı mühəndislərimiz tərəfindən şəbəkə sisteminin professional şəkildə layihələndirilməsi"
+                },
+                {
+                  step: "2",
+                  title: "Razılaşma",
+                  description: "Layihənin təqdim edilməsi və müştərinin razılığının alınması"
+                },
+                {
+                  step: "3",
+                  title: "İcra",
+                  description: "Kabelləşmə işindən başlayaraq avadanlıqların sazlanmasına qədər olan bütün işlərin operativ şəkildə icrası"
+                },
+                {
+                  step: "4",
+                  title: "Test və təhvil",
+                  description: "Müasir test cihazları ilə şəbəkənin test edilməsi və nəticələrin təqdim edilməsi"
+                }
+              ].map((process, index) => (
+                <div key={index} className="bg-secondary p-6 rounded-lg">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-accent-foreground font-bold text-xl">{process.step}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-primary mb-2">{process.title}</h3>
+                      <p className="text-foreground leading-relaxed">
+                        {process.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Step 4 */}
-              <div className="bg-secondary p-6 rounded-lg">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-accent-foreground font-bold text-xl">4</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">Test və təhvil</h3>
-                    <p className="text-foreground leading-relaxed">
-                      Müasir test cihazları ilə şəbəkənin test edilməsi və nəticələrin təqdim edilməsi
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="bg-accent/10 p-8 rounded-lg border-l-4 border-accent">
-            <p className="text-primary font-medium text-lg leading-relaxed">
+          {/* Commitment */}
+          <div className="bg-primary/5 p-6 rounded-lg border-l-4 border-accent">
+            <p className="text-primary font-medium">
               Şəbəkə infrastrukturunuzun sürətli, təhlükəsiz və etibarlı olması üçün Data Line şirkətinə güvənə bilərsiniz.
             </p>
           </div>

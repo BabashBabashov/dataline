@@ -5,22 +5,49 @@ import { ContactSection } from "@/components/contact-section"
 export default function TexnikiDestekPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Page Title */}
-      <section className="bg-primary py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 mb-4">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Xidmətlərə geri
-            </Link>
-          </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground text-center">
-            Texniki Dəstək
-          </h1>
+      {/* Banner Section with Card Starting from Navy Strip Middle */}
+      <section className="relative">
+        {/* Banner Background */}
+        <div className="h-[220px] bg-gradient-to-br from-primary/20 to-primary/5" />
+        
+        {/* Blue Strip that card will overlap */}
+        <div className="h-40" style={{ backgroundColor: '#1A2B6D' }} />
+
+        {/* Back Link */}
+        <div className="absolute top-4 left-4 z-20">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-white hover:text-accent transition-colors bg-primary/50 backdrop-blur-sm px-4 py-2 rounded-lg"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Xidmətlərə geri
+          </Link>
         </div>
+
+        {/* Overlapping Service Card - Starting from middle of navy strip */}
+        <div className="absolute left-0 right-0 top-[280px] md:top-[300px] z-10 pointer-events-none">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-center pointer-events-auto">
+              <div className="relative max-w-3xl w-full">
+                {/* Offset Frame */}
+                <div className="absolute inset-0 translate-x-2 translate-y-2 border border-primary-foreground/40 pointer-events-none" aria-hidden="true" />
+                
+                {/* Card */}
+                <div className="relative bg-background p-12 md:p-16 shadow-xl">
+                  <h1 className="text-2xl md:text-4xl font-semibold mb-4 leading-tight text-balance" style={{ color: '#1A2B6D' }}>
+                    Texniki Dəstək
+                  </h1>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    Kompüterlərin etibarlı və fasiləsiz işi, təşkilatın uğurlu fəaliyyəti üçün vacibdir. DATALINE şirkəti profilaktik tədbirlərdən operativ təmirə qədər tam xidmət təklif edir.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Spacer to account for overlapping card */}
+        <div className="h-[180px]" />
       </section>
 
       {/* Content Section */}
@@ -29,75 +56,29 @@ export default function TexnikiDestekPage() {
 
           {/* Introduction */}
           <div className="bg-secondary p-8 md:p-10 rounded-lg shadow-lg mb-12">
-            <h2 className="text-xl font-bold text-primary mb-4">Kompüterlərə xidmət</h2>
             <p className="text-lg leading-relaxed text-foreground">
-              Kompüterlərin etibarlı və fasiləsiz işi, təşkilatın uğurlu fəaliyyəti üçün vacib şərtdir. Bu gün kompüterlər çoxlu sayda funksiyaları icra edirlər və onların xarab olması satış şöbəsinin, mühasibatlığın və hətta bütün təşkilatın fəaliyyətini ən uyğun olmayan anda dayandıra bilər.
-            </p>
-            <p className="text-muted-foreground mt-4">
-              Bu sür halların qarşısını almaq üçün DATALINE şirkəti aşağıdakı xidmətləri təklif edir:
+              Kompüter xarab olması satış şöbəsinin, mühasibatlığın və hətta bütün təşkilatın fəaliyyətini dayandıra bilər. Bu sür halların qarşısını almaq üçün burayıq.
             </p>
           </div>
 
           {/* Services List */}
           <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
-              Təmin edilən xidmətlər
-            </h2>
-
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Təmin edilən xidmətlər</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Kompüter və avadanlıqların xarab olmasının və aşınmasının qarşısını alan profilaktik tədbirlərin aparılması"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Kompüterlərin və periferiyaların (printer, skaner, faks və s.) operativ təmiri və dəyişdirilməsi"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "İstifadəçilərə kompüterə, proqram təminatına və digər avadanlıqlara aid konsultasiyaların verilməsi"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Nasazlıqların diaqnostika olunması, proqram təminatında və avadanlıqlarda problemlərin aradan qaldırılması"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Virus yoluxmuş kompüter və notbukların diaqnostikası və müalicəsi"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "İstismar olunan avadanlıqların yenilənməsi ilə bağlı təkliflərin hazırlanması"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Ofis daxilində işçilərin yerdəyişməsi zamanı kompüterlərin demontaj olunması, köçürülməsi və montaj olunması"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Printerlərin, faksların və kseroks aparatlarının tükənən materiallarının dəyişdirilməsi"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Periferiyaların qoşulması və köklənməsi"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Mini ATS-lərin satışı, qurulması, montajı, proqramlaşdırılması"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Viruslardan və xakerlərdən müdafiə sisteminin yaradılması"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Kompüterlərin köklənməsi və avadanlıqların yenilənməsi (upgrade)"
-                },
-                {
-                  icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                  text: "Proqram təminatının köklənməsi və yenilənməsi"
-                }
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Profilaktik tədbirlərin aparılması" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Kompüterlərin operativ təmiri" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Konsultasiyaların verilməsi" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Nasazlıqların aradan qaldırılması" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Virus diaqnostikası və müalicəsi" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Avadanlıqların yenilənməsi" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Kompüterlərin köçürülməsi" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Printer və kseroks xidməti" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Periferiyaların qoşulması" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Mini ATS xidmətləri" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Virus müdafiə sistemi" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Kompüterlərin yenilənməsi" },
+                { icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />, text: "Proqramların köklənməsi" }
               ].map((service, index) => (
                 <div key={index} className="bg-primary/5 p-5 rounded-lg hover:bg-primary/10 transition-colors">
                   <div className="flex items-start gap-3">
@@ -109,56 +90,9 @@ export default function TexnikiDestekPage() {
             </div>
           </div>
 
-          {/* Service Delivery Method */}
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
-              Xidmətin göstərilmə üsulları
-            </h2>
-
-            <div className="space-y-6">
-              {/* Remote Support */}
-              <div className="bg-secondary p-6 rounded-lg">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">Məsafədən dəstək</h3>
-                    <p className="text-foreground leading-relaxed">
-                      DATALINE şirkətinin əməkdaşları ilk olaraq məsafədən idarəetmə vasitələrinin köməyi ilə xidmət göstərir. Bu üsul sürətli və səmərəli həll yolu kimi prioritetdir.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* On-site Support */}
-              <div className="bg-secondary p-6 rounded-lg">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2">Yerdə dəstək</h3>
-                    <p className="text-foreground leading-relaxed">
-                      Əgər məsafədən idarəetmə üsulu ilə tam xidmət göstərmək mümkün deyilsə, Sifarişçinin ünvanına İT mütəxəssis göndərilir.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Benefits */}
           <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
-              Üstünlüklərimiz
-            </h2>
-
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Üstünlüklərimiz</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-secondary p-6 rounded-lg text-center">
                 <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
@@ -167,9 +101,7 @@ export default function TexnikiDestekPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-primary mb-2">Operativ həll</h3>
-                <p className="text-muted-foreground text-sm">
-                  Problemlərin tez müəyyən edilməsi və aradan qaldırılması
-                </p>
+                <p className="text-muted-foreground text-sm">Problemlərin tez həlli</p>
               </div>
 
               <div className="bg-secondary p-6 rounded-lg text-center">
@@ -179,9 +111,7 @@ export default function TexnikiDestekPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-primary mb-2">Profilaktika</h3>
-                <p className="text-muted-foreground text-sm">
-                  Problemlərin qarşısını alan müntəzəm tədbirlər
-                </p>
+                <p className="text-muted-foreground text-sm">Müntəzəm tədbirlər</p>
               </div>
 
               <div className="bg-secondary p-6 rounded-lg text-center">
@@ -191,17 +121,15 @@ export default function TexnikiDestekPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-primary mb-2">Peşəkar komanda</h3>
-                <p className="text-muted-foreground text-sm">
-                  Təcrübəli İT mütəxəssisləri tərəfindən dəstək
-                </p>
+                <p className="text-muted-foreground text-sm">Təcrübəli İT mütəxəssisləri</p>
               </div>
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="bg-accent/10 p-8 rounded-lg border-l-4 border-accent">
-            <p className="text-primary font-medium text-lg leading-relaxed">
-              Kompüterlərinizin və avadanlıqlarınızın etibarlı işi üçün DATALINE şirkətinə güvənə bilərsiniz. 7/24 texniki dəstək xidməti ilə yanınızdayıq.
+          {/* Commitment */}
+          <div className="bg-primary/5 p-6 rounded-lg border-l-4 border-accent">
+            <p className="text-primary font-medium">
+              Kompüterlərinizin etibarlı işi üçün DATALINE şirkətinə güvənə bilərsiniz. 7/24 texniki dəstək xidməti ilə yanınızdayıq.
             </p>
           </div>
         </div>

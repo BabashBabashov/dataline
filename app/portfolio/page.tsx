@@ -57,31 +57,19 @@ export default function PortfolioPage() {
 
           {/* Logos Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12 max-w-6xl mx-auto">
-            {/* Placeholder logos - 12 items */}
-            {[...Array(12)].map((_, index) => (
+            {/* Partner logos - 17 items */}
+            {[...Array(17)].map((_, index) => (
               <div
                 key={index}
-                className="aspect-square bg-secondary rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition-all hover:scale-105 group"
+                className="aspect-square bg-white rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition-all hover:scale-105 p-4"
               >
-                <div className="text-center p-4">
-                  {/* Placeholder icon */}
-                  <svg
-                    className="w-16 h-16 text-primary/20 mx-auto mb-3 group-hover:text-primary/40 transition-colors"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
-                  <p className="text-xs text-muted-foreground">
-                    Logo {index + 1}
-                  </p>
-                </div>
+                <Image
+                  src={`/images/portfolio/${index + 1}.png`}
+                  alt={`Tərəfdaş ${index + 1}`}
+                  width={200}
+                  height={200}
+                  className="object-contain w-full h-full"
+                />
               </div>
             ))}
           </div>

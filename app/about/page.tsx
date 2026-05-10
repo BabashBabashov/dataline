@@ -97,29 +97,30 @@ export default function AboutPage() {
 
           {/* Certificates Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[...Array(9)].map((_, index) => (
+            {[
+              'cisco.png',
+              'mcsa.png',
+              'mcts.jpg',
+              'win2007-1.jpg',
+              'win2007-2.png',
+              'win2008-1.jpg',
+              'win2008-2.jpg',
+              'win2008-3.png',
+              'win2012.png'
+            ].map((filename, index) => (
               <div
                 key={index}
-                className="aspect-[3/4] bg-secondary rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+                className="aspect-[3/4] bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group"
               >
-                <div className="text-center p-6">
-                  <svg
-                    className="w-20 h-20 text-primary/30 mx-auto mb-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                  <p className="text-muted-foreground text-sm">
-                    Sertifikat {index + 1}
-                  </p>
-                </div>
+                <Image
+                  src={`/images/certificates/${filename}`}
+                  alt={`Sertifikat ${index + 1}`}
+                  width={300}
+                  height={400}
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  unoptimized
+                />
               </div>
             ))}
           </div>

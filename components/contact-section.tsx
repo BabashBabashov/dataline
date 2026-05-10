@@ -27,7 +27,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="bg-primary py-20 md:py-28">
+    <section id="contact" className="py-20 md:py-28" style={{ backgroundColor: '#1A2B6D' }}>
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-serif text-primary-foreground text-center mb-12">ƏLAQƏ</h2>

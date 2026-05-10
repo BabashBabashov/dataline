@@ -5,27 +5,61 @@ import { ContactSection } from "@/components/contact-section"
 export default function SesSistemlerininKurulmasiPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Page Title */}
-      <section className="bg-primary py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 mb-4">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Xidmətlərə geri
-            </Link>
-          </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground text-center">
-            Səs Sistemlərinin Qurulması
-          </h1>
+      {/* Banner Section with Card Starting from Navy Strip Middle */}
+      <section className="relative">
+        {/* Banner Background */}
+        <div className="h-[220px] bg-gradient-to-br from-primary/20 to-primary/5" />
+        
+        {/* Blue Strip that card will overlap */}
+        <div className="h-40" style={{ backgroundColor: '#1A2B6D' }} />
+
+        {/* Back Link */}
+        <div className="absolute top-4 left-4 z-20">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-white hover:text-accent transition-colors bg-primary/50 backdrop-blur-sm px-4 py-2 rounded-lg"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Xidmətlərə geri
+          </Link>
         </div>
+
+        {/* Overlapping Service Card - Starting from middle of navy strip */}
+        <div className="absolute left-0 right-0 top-[280px] md:top-[300px] z-10 pointer-events-none">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-center pointer-events-auto">
+              <div className="relative max-w-3xl w-full">
+                {/* Offset Frame */}
+                <div className="absolute inset-0 translate-x-2 translate-y-2 border border-primary-foreground/40 pointer-events-none" aria-hidden="true" />
+                
+                {/* Card */}
+                <div className="relative bg-background p-12 md:p-16 shadow-xl">
+                  <h1 className="text-2xl md:text-4xl font-semibold mb-4 leading-tight text-balance" style={{ color: '#1A2B6D' }}>
+                    Səs Sistemlərinin Qurulması
+                  </h1>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    Peşəkar səs sistemləri və çağırış sistemlərinin quraşdırılması. Xəstəxana, konfrans zalları və digər obyektlər üçün kompleks həllər.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Spacer to account for overlapping card */}
+        <div className="h-[180px]" />
       </section>
 
       {/* Content Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-4xl">
+
+          {/* Introduction */}
+          <div className="bg-secondary p-8 md:p-10 rounded-lg shadow-lg mb-12">
+            <p className="text-lg leading-relaxed text-foreground">
+              Gücləndirici sistemlər, akustik kolonlar, mikser və DSP avadanlıqlarının professional quraşdırılması həyata keçirilir.
+            </p>
+          </div>
 
           {/* Professional Audio Systems */}
           <div className="mb-12">
@@ -42,12 +76,8 @@ export default function SesSistemlerininKurulmasiPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">
-                      Gücləndirici sistemlər
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Yüksək keyfiyyətli gücləndirici (amplifier) sistemlərinin quraşdırılması
-                    </p>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Gücləndirici sistemlər</h3>
+                    <p className="text-muted-foreground text-sm">Yüksək keyfiyyətli gücləndirici (amplifier) sistemləri</p>
                   </div>
                 </div>
               </div>
@@ -60,12 +90,8 @@ export default function SesSistemlerininKurulmasiPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">
-                      Akustik kolon və subwoofer sistemləri
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Müxtəlif növ akustik kolonların və subwoofer sistemlərinin quraşdırılması
-                    </p>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Akustik kolonlar</h3>
+                    <p className="text-muted-foreground text-sm">Müxtəlif növ akustik kolonların və subwoofer sistemləri</p>
                   </div>
                 </div>
               </div>
@@ -78,12 +104,8 @@ export default function SesSistemlerininKurulmasiPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">
-                      Mikser və DSP avadanlıqları
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Mikser və DSP (Digital Signal Processing) avadanlıqlarının professional sazlanması
-                    </p>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Mikser və DSP</h3>
+                    <p className="text-muted-foreground text-sm">Mikser və DSP avadanlıqlarının professional sazlanması</p>
                   </div>
                 </div>
               </div>
@@ -96,89 +118,17 @@ export default function SesSistemlerininKurulmasiPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">
-                      Konfrans və tədbir məkanları
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Konfrans və tədbir məkanları üçün professional səsləndirmə həlləri
-                    </p>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Konfrans sistemləri</h3>
+                    <p className="text-muted-foreground text-sm">Konfrans və tədbir məkanları üçün professional həllər</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Call Systems */}
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
-              Çağrı Sistemləri
-            </h2>
-
-            <div className="bg-secondary p-6 rounded-lg mb-8">
-              <p className="text-foreground leading-relaxed">
-                Tərəfimizdən təqdim edilən çağırış sistemləri xəstəxana, klinika və digər səhiyyə müəssisələrində operativ əlaqə və sürətli reaksiya təmin etmək üçün nəzərdə tutulub. Sistemlər pasiyent təhlükəsizliyini artırır, personalın işini optimallaşdırır və xidmət keyfiyyətini yüksəldir.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {[
-                {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
-                  text: "Təcili hallarda operativ müdaxilə imkanı yaradır"
-                },
-                {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
-                  text: "Pasiyent–personal əlaqəsini sürətləndirir"
-                },
-                {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
-                  text: "Xidmət keyfiyyətini və nəzarəti artırır"
-                },
-                {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
-                  text: "İş prosesini avtomatlaşdırır"
-                }
-              ].map((benefit, index) => (
-                <div key={index} className="bg-primary/5 p-5 rounded-lg">
-                  <div className="flex items-start gap-3">
-                    <div className="mt-0.5">{benefit.icon}</div>
-                    <p className="text-foreground">{benefit.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* System Components */}
-            <div>
-              <h3 className="text-xl font-semibold text-primary mb-4">Sistem Komponentləri</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  "Yataq başı çağırış düyməsi",
-                  "Təcili çağırış funksiyası",
-                  "Kabel və ya simsiz modul seçimləri",
-                  "Mərkəzi monitor və ya LED ekran",
-                  "Otaq və yataq nömrəsinin göstərilməsi",
-                  "Səsli və vizual bildiriş",
-                  "Kabel və ya IP əsaslı həllər",
-                  "Avtomatik qeydiyyat və hesabat sistemi"
-                ].map((component, index) => (
-                  <div key={index} className="bg-primary/5 p-4 rounded-lg">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
-                      <span className="text-foreground">{component}</span>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
 
           {/* Benefits */}
           <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
-              Üstünlüklərimiz
-            </h2>
-
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Üstünlüklərimiz</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-secondary p-6 rounded-lg text-center">
                 <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
@@ -187,9 +137,7 @@ export default function SesSistemlerininKurulmasiPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-primary mb-2">Etibarlılıq</h3>
-                <p className="text-muted-foreground text-sm">
-                  Yüksək keyfiyyətli avadanlıq və komponentlər
-                </p>
+                <p className="text-muted-foreground text-sm">Yüksək keyfiyyətli avadanlıq</p>
               </div>
 
               <div className="bg-secondary p-6 rounded-lg text-center">
@@ -199,9 +147,7 @@ export default function SesSistemlerininKurulmasiPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-primary mb-2">Peşəkar quraşdırma</h3>
-                <p className="text-muted-foreground text-sm">
-                  Təcrübəli mütəxəssislər tərəfindən düzgün quraşdırma
-                </p>
+                <p className="text-muted-foreground text-sm">Təcrübəli mütəxəssislər</p>
               </div>
 
               <div className="bg-secondary p-6 rounded-lg text-center">
@@ -211,17 +157,15 @@ export default function SesSistemlerininKurulmasiPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-primary mb-2">Texniki dəstək</h3>
-                <p className="text-muted-foreground text-sm">
-                  Müntəzəm texniki xidmət və dəstək
-                </p>
+                <p className="text-muted-foreground text-sm">Müntəzəm texniki xidmət</p>
               </div>
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="bg-accent/10 p-8 rounded-lg border-l-4 border-accent">
-            <p className="text-primary font-medium text-lg leading-relaxed">
-              Səs sisteminizin peşəkar qurulması və çağrı sistemləri üçün Dataline MMC-yə güvənə bilərsiniz. Həllərimiz səhiyyə müəssisələri, konfrans zalları və digər obyektlər üçün optimallaşdırılıb.
+          {/* Commitment */}
+          <div className="bg-primary/5 p-6 rounded-lg border-l-4 border-accent">
+            <p className="text-primary font-medium">
+              Səs sisteminizin peşəkar qurulması üçün Dataline MMC-yə güvənə bilərsiniz. Təcrübəli komandamız sizin üçün ən keyfiyyətli həlləri hazırlamağa hazırdır.
             </p>
           </div>
         </div>

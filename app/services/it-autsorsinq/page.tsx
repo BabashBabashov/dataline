@@ -1,26 +1,63 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, CheckCircle2 } from "lucide-react"
 import { ContactSection } from "@/components/contact-section"
 
 export default function ITAutsorsinqPage() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Page Title */}
-      <section className="bg-primary py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 mb-4">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Xidmətlərə geri
-            </Link>
-          </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground text-center">
-            İT Autsorsinq
-          </h1>
+      {/* Banner Section with Card Starting from Navy Strip Middle */}
+      <section className="relative">
+        {/* Banner Image */}
+        <div className="relative h-[200px] md:h-[220px]">
+          <Image
+            src="/images/services/it-autsorsinq.jpg"
+            alt="İT Autsorsinq"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-primary/5" />
         </div>
+
+        {/* Blue Strip that card will overlap */}
+        <div className="h-40" style={{ backgroundColor: '#1A2B6D' }} />
+
+        {/* Back Link */}
+        <div className="absolute top-4 left-4 z-20">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-white hover:text-accent transition-colors bg-primary/50 backdrop-blur-sm px-4 py-2 rounded-lg"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Xidmətlərə geri
+          </Link>
+        </div>
+
+        {/* Overlapping Service Card - Starting from middle of navy strip */}
+        <div className="absolute left-0 right-0 top-[280px] md:top-[300px] z-10 pointer-events-none">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-center pointer-events-auto">
+              <div className="relative max-w-3xl w-full">
+                {/* Offset Frame */}
+                <div className="absolute inset-0 translate-x-2 translate-y-2 border border-primary-foreground/40 pointer-events-none" aria-hidden="true" />
+                
+                {/* Card */}
+                <div className="relative bg-background p-12 md:p-16 shadow-xl">
+                  <h1 className="text-2xl md:text-4xl font-semibold mb-4 leading-tight text-balance" style={{ color: '#1A2B6D' }}>
+                    İT Autsorsinq
+                  </h1>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    İT xidmətlərinin dəyəri daimi işçinin əmək haqqından daha aşağıdır. Vergi ödəmək lazım deyil.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Spacer to account for overlapping card */}
+        <div className="h-[180px]" />
       </section>
 
       {/* Content Section */}
