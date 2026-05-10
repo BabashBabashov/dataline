@@ -7,11 +7,11 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 
 const navItems = [
-  { label: "ANA SƏHİFƏ", href: "/" },
-  { label: "NİYƏ BİZ", href: "/about" },
-  { label: "XİDMƏTLƏR", href: "/services" },
-  { label: "PORTFEL", href: "/portfolio" },
-  { label: "ƏLAQƏ", href: "/#contact" },
+  { label: "Ana Səhifə", href: "/" },
+  { label: "Niyə Biz", href: "/about" },
+  { label: "Xidmətlər", href: "/services" },
+  { label: "Portfel", href: "/portfolio" },
+  { label: "Əlaqə", href: "/#contact" },
 ]
 
 export function Header() {
@@ -39,7 +39,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex items-center justify-center gap-10 absolute top-1/2 -translate-y-1/2" style={{ width: 'calc(100% - 128px)', height: '50px', right: '128px' }}>
             {navItems.map((item) => (
               <Link
                 key={item.label}

@@ -8,7 +8,7 @@ export default function ServicesPage() {
       {/* Hero Section with Background Image */}
       <section className="relative">
         {/* Background Image */}
-        <div className="relative h-[420px] md:h-[480px]">
+        <div className="absolute right-0 top-0 bottom-0 h-[534px]" style={{ width: 'calc(100% - 128px)', right: '128px' }}>
           <Image
             src="/images/industries-hero.jpg"
             alt="Dataline MMC - Xidmətlər"
@@ -18,30 +18,31 @@ export default function ServicesPage() {
           />
           <div className="absolute inset-0 bg-primary/5" />
         </div>
+        
+        {/* Spacer for banner */}
+        <div className="h-[534px]" />
 
         {/* Navy strip that the card will overlap */}
-        <div className="h-16 bg-primary" />
+        <div className="h-[15px] bg-primary mr-[128px]" />
 
-        {/* Centered overlapping card */}
-        <div className="absolute left-0 right-0 top-[240px] md:top-[280px] z-10 pointer-events-none">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-center pointer-events-auto">
-              <div className="bg-background max-w-2xl w-full shadow-xl">
-                <div className="p-10 md:p-14 text-center">
-                  <h1 className="text-3xl md:text-5xl font-bold text-primary leading-tight text-balance">
-                    XİDMƏTLƏR
-                  </h1>
-                  <p className="text-muted-foreground text-sm mt-4">
-                    Peşəkar həllər və keyfiyyətli xidmətlər
-                  </p>
-                </div>
+        {/* Centered overlapping card - overlaps banner, navy strip, and white background */}
+        <div className="absolute z-10 pointer-events-none" style={{ right: '272px', top: '267px' }}>
+          <div className="pointer-events-auto">
+            <div className="bg-background shadow-2xl" style={{ width: '685px', height: '445px' }}>
+              <div className="p-12 text-center flex flex-col justify-center h-full">
+                <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight text-balance">
+                  XİDMƏTLƏR
+                </h1>
+                <p className="text-muted-foreground text-base mt-4">
+                  Peşəkar həllər və keyfiyyətli xidmətlər
+                </p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Spacer to account for overlapping card */}
-        <div className="h-[200px] md:h-[180px]" />
+        <div className="h-[280px] md:h-[320px]" />
       </section>
 
       {/* Services Content */}
