@@ -13,6 +13,12 @@ const slides = [
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [hoveredSection, setHoveredSection] = useState<'plus' | 'text' | null>(null)
+  const [cardVisible, setCardVisible] = useState(false)
+
+  useEffect(() => {
+    setCardVisible(true)
+  }, [])
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
@@ -75,38 +81,58 @@ export function HeroSection() {
       <div className="h-16 bg-primary" />
 
       {/* Overlapping Content Card - positioned absolutely to span both sections */}
-      <div className="absolute left-0 right-0 top-[240px] md:top-[280px] z-10 pointer-events-none">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center md:justify-end pointer-events-auto">
-            <div className="bg-background max-w-lg w-full shadow-xl">
-              <div className="p-8 md:p-10 text-center">
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-6 text-balance">
+      <div className="absolute z-10 pointer-events-none right-0 md:right-[272px] top-[267px] md:top-[267px]">
+        <div
+          className="overflow-hidden w-[90vw] md:w-[685px] h-[400px] md:h-[445px]"
+        >
+          <div
+            className={`pointer-events-auto transition-transform duration-1000 ease-out w-[90vw] md:w-[685px] h-[400px] md:h-[445px] ${
+              cardVisible ? 'translate-x-0' : '-translate-x-full'
+            }`}
+          >
+            <div className="shadow-2xl h-full" style={{ backgroundColor: '#F2F2F2' }}>
+              <div className="p-12 text-center flex flex-col justify-center h-full">
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4 text-balance">
                   Dataline xoş gəlmisiniz!
                 </h1>
 
-                <div className="w-16 h-0.5 bg-primary mb-6 mx-auto" />
+                <div className="w-16 h-0.5 bg-primary mb-4 mx-auto" />
 
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   2015-ci ildə yaradılmış Dataline şirkəti qısa müddət ərzində İT autsorsinq, İT xidmətlərinin göstərilməsi, sistem inteqrasiyası, serverlərin qurulması, nəzarət sistemləri, kommunikasiya üzrə ixtisaslaşıb və öz müştərilərinə xidmət göstərməkdədir. Şirkətimiz yüksək ixtisaslı təcrübəli gənc mütəxəssislərdən təşkil olunmuşdur. Şirkətimizin əsas məqsədi müştərilərə keyfiyyətli İT autsorsinq təklif etməkdir.
                 </p>
               </div>
-
-              {/* Button row attached to bottom of card */}
-              <div className="flex justify-center">
-                <Link
-                  href="/services"
-                  className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-6 py-3 text-sm font-medium hover:bg-accent/90 transition-colors"
-                >
-                  <span className="flex items-center justify-center w-6 h-6 bg-primary text-primary-foreground">
-                    <Plus className="h-4 w-4" />
-                  </span>
-                  Daha çox öyrən
-                </Link>
-              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Button box outside card at bottom right */}
+      <div className="absolute z-20 pointer-events-auto inline-flex shadow-lg right-0 md:right-[272px] top-[calc(267px+400px)] md:top-[calc(267px+445px)]">
+            <Link href="/services" className="inline-flex">
+              {/* Left: Blue square with + */}
+              <div
+                className={`flex items-center justify-center w-12 h-12 text-primary-foreground transition-colors ${
+                  hoveredSection === 'plus' ? 'bg-red-600' : hoveredSection === 'text' ? 'bg-primary' : 'bg-primary'
+                }`}
+                onMouseEnter={() => setHoveredSection('plus')}
+                onMouseLeave={() => setHoveredSection(null)}
+              >
+                <Plus className="h-6 w-6" />
+              </div>
+              
+              {/* Right: Red box with text */}
+              <div
+                className={`flex items-center justify-center px-6 py-3 text-white text-sm font-medium transition-colors ${
+                  hoveredSection === 'text' ? 'bg-primary' : hoveredSection === 'plus' ? 'bg-red-600' : 'bg-red-600'
+                }`}
+                onMouseEnter={() => setHoveredSection('text')}
+                onMouseLeave={() => setHoveredSection(null)}
+              >
+                Daha çox öyrən
+              </div>
+            </Link>
+          </div>
 
       {/* Spacer to account for overlapping card on mobile/desktop */}
       <div className="h-[280px] md:h-[240px]" />

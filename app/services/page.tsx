@@ -1,8 +1,17 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { useState, useEffect } from "react"
 import { ContactSection } from "@/components/contact-section"
 
 export default function ServicesPage() {
+  const [cardVisible, setCardVisible] = useState(false)
+  const [hoveredSection, setHoveredSection] = useState<'card' | null>(null)
+
+  useEffect(() => {
+    setCardVisible(true)
+  }, [])
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section with Background Image */}
@@ -26,16 +35,32 @@ export default function ServicesPage() {
         <div className="h-[15px] bg-primary mr-[128px]" />
 
         {/* Centered overlapping card - overlaps banner, navy strip, and white background */}
-        <div className="absolute z-10 pointer-events-none" style={{ right: '272px', top: '267px' }}>
+        <div className="absolute z-10 pointer-events-none right-0 md:right-[272px] top-[267px]">
           <div className="pointer-events-auto">
-            <div className="bg-background shadow-2xl" style={{ width: '685px', height: '445px' }}>
-              <div className="p-12 text-center flex flex-col justify-center h-full">
-                <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight text-balance">
-                  XİDMƏTLƏR
-                </h1>
-                <p className="text-muted-foreground text-base mt-4">
-                  Peşəkar həllər və keyfiyyətli xidmətlər
-                </p>
+            <div
+              className={`overflow-hidden transition-all duration-1000 ease-out w-[90vw] md:w-[685px] h-[400px] md:h-[445px] ${
+                cardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              <div
+                className="shadow-2xl h-full transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundColor: hoveredSection === 'card' ? '#E8E8E8' : '#F2F2F2',
+                  transform: hoveredSection === 'card' ? 'scale(1.02)' : 'scale(1)'
+                }}
+                onMouseEnter={() => setHoveredSection('card')}
+                onMouseLeave={() => setHoveredSection(null)}
+              >
+                <div className="p-12 text-center flex flex-col justify-center h-full">
+                  <div className="w-16 h-0.5 bg-primary mb-6 mx-auto transition-all duration-300"
+                       style={{ width: hoveredSection === 'card' ? '120px' : '64px' }} />
+                  <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight text-balance">
+                    XİDMƏTLƏR
+                  </h1>
+                  <p className="text-muted-foreground text-base mt-4">
+                    Peşəkar həllər və keyfiyyətli xidmətlər
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -48,7 +73,7 @@ export default function ServicesPage() {
       {/* Services Content */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-secondary p-8 md:p-12 rounded-lg shadow-lg mb-16">
+          <div className="bg-secondary p-8 text-center flex flex-col justify-center items-center rounded-lg shadow-lg mb-16 min-h-[200px]">
             <p className="text-lg md:text-xl leading-relaxed text-foreground text-justify">
               Biz əminik ki, tez bir zamanda sizin problemlərinizi həll edib sizə ən yaxşı xidmətləri təqdim edəcəyik. Siz asanlıqla problemlərinizi bizim şirkətə etibar edə bilərsiniz.
             </p>

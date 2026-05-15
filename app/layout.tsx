@@ -9,9 +9,24 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'ITG - IT Consulting & Services',
-  description: 'Professional IT consulting and services including cloud solutions, managed IT services, and disaster recovery.',
+  title: 'Dataline MMC - IT Konsaltinq və Xidmətlər',
+  description: 'Professional IT konsaltinq və xidmətlər, bulud həlləri, idarə olunan IT xidmətləri və fəlakət bərpası.',
+  keywords: ['IT konsaltinq', 'IT xidmətləri', 'Dataline MMC', 'server', 'şəbəkə', 'yanğın sistemi'],
   generator: 'v0.app',
+  metadataBase: new URL('https://dataline.az'),
+  openGraph: {
+    title: 'Dataline MMC - IT Konsaltinq və Xidmətlər',
+    description: 'Professional IT konsaltinq və xidmətlər',
+    url: 'https://dataline.az',
+    siteName: 'Dataline MMC',
+    locale: 'az_AZ',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Dataline MMC - IT Konsaltinq və Xidmətlər',
+    description: 'Professional IT konsaltinq və xidmətlər',
+  },
   icons: {
     icon: [
       {
@@ -37,8 +52,33 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
+    <html lang="az" className="bg-background">
       <body className="font-sans antialiased pt-16">
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Dataline MMC",
+              url: "https://dataline.az",
+              logo: "https://dataline.az/images/logo.png",
+              description: "IT konsaltinq və xidmətlər",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Ə.Rəcəbli str.25",
+                addressLocality: "N.Nərimanov",
+                addressCountry: "AZ"
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+994-12-408-35-35",
+                contactType: "customer service"
+              }
+            })
+          }}
+        />
         <Header />
         {children}
         <FloatingIcons />

@@ -13,9 +13,36 @@ export function ContactSection() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[Dataline MMC] Form göndərildi:", formData)
+    
+    // Basic validation
+    if (!formData.firstName || !formData.lastName || !formData.email) {
+      alert('Zəhmət olmasa bütün zəruri xanaları doldurun (*)')
+      return
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        alert(data.message || 'Mesajınız uğurla göndərildi!')
+        setFormData({ firstName: '', lastName: '', email: '', message: '' })
+      } else {
+        alert(data.error || 'Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      alert('Xəta baş verdi. Zəhmət olmasa internet bağlantınızı yoxlayın və yenidən cəhd edin.')
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
