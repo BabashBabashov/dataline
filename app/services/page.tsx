@@ -19,7 +19,7 @@ export default function ServicesPage() {
         {/* Background Image */}
         <div className="absolute right-0 top-0 bottom-0 h-[534px]" style={{ width: 'calc(100% - 128px)', right: '128px' }}>
           <Image
-            src="/images/industries-hero.jpg"
+            src="/images/services/banner1.jpg"
             alt="Dataline MMC - Xidmətlər"
             fill
             className="object-cover"
