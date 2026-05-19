@@ -36,7 +36,7 @@ export function HeroSection() {
   return (
     <section className="relative">
       {/* Background Image Carousel with navy bottom strip */}
-      <div className="relative h-[450px] md:h-[550px]">
+      <div className="relative h-[534px]" style={{ width: 'calc(100% - 128px)', marginLeft: '128px' }}>
         <Image
           src={slides[currentSlide].image}
           alt={slides[currentSlide].alt}
@@ -50,20 +50,20 @@ export function HeroSection() {
         <button
           onClick={prevSlide}
           aria-label="Əvvəlki slayd"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-primary rounded-full flex items-center justify-center transition-colors shadow-lg"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-primary rounded-full flex items-center justify-center transition-colors shadow-lg"
         >
           <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
         </button>
         <button
           onClick={nextSlide}
           aria-label="Növbəti slayd"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-primary rounded-full flex items-center justify-center transition-colors shadow-lg"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-primary rounded-full flex items-center justify-center transition-colors shadow-lg"
         >
           <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
         </button>
 
         {/* Dots Indicator */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -78,10 +78,10 @@ export function HeroSection() {
       </div>
 
       {/* Navy strip that the card will overlap */}
-      <div className="h-16 bg-primary" />
+      <div className="h-[15px] bg-primary" style={{ marginLeft: '128px', width: 'calc(100% - 128px)' }} />
 
       {/* Overlapping Content Card - positioned absolutely to span both sections */}
-      <div className="absolute z-10 pointer-events-none right-0 md:right-[272px] top-[267px] md:top-[267px]">
+      <div className="absolute z-30 pointer-events-none right-0 md:right-[272px] top-[267px] md:top-[267px]">
         <div
           className="overflow-hidden w-[90vw] md:w-[685px] h-[400px] md:h-[445px]"
         >
@@ -108,7 +108,7 @@ export function HeroSection() {
       </div>
 
       {/* Button box outside card at bottom right */}
-      <div className="absolute z-20 pointer-events-auto inline-flex shadow-lg right-0 md:right-[272px] top-[calc(267px+400px)] md:top-[calc(267px+445px)]">
+      <div className="absolute z-30 pointer-events-auto inline-flex shadow-lg right-0 md:right-[272px] top-[calc(267px+400px)] md:top-[calc(267px+445px)]">
             <Link href="/services" className="inline-flex">
               {/* Left: Blue square with + */}
               <div
@@ -135,7 +135,7 @@ export function HeroSection() {
           </div>
 
       {/* Spacer to account for overlapping card on mobile/desktop */}
-      <div className="h-[280px] md:h-[240px]" />
+      <div className="h-[280px] md:h-[320px]" />
     </section>
   )
 }
