@@ -1,8 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
-
-// Optional: Use Resend for email sending
-// const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,27 +31,13 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     })
 
-    // Optional: Send email using Resend
-    // if (process.env.RESEND_API_KEY) {
-    //   await resend.emails.send({
-    //     from: 'onboarding@resend.dev',
-    //     to: 'info@dataline.az',
-    //     subject: `Yeni əlaqə forması - ${firstName} ${lastName}`,
-    //     html: `
-    //       <h2>Yeni əlaqə forması</h2>
-    //       <p><strong>Ad:</strong> ${firstName}</p>
-    //       <p><strong>Soyad:</strong> ${lastName}</p>
-    //       <p><strong>E-poçt:</strong> ${email}</p>
-    //       <p><strong>Mesaj:</strong></p>
-    //       <p>${message || 'Mesaj yoxdur'}</p>
-    //     `
-    //   })
-    // }
+    // TODO: Integrate email service (Resend, SendGrid, etc.) when ready
+    // For production use, install an email package and configure it here
 
     return NextResponse.json(
-      { 
-        success: true, 
-        message: 'Mesajınız uğurla göndərildi. Tezliklə sizinlə əlaqə saxlayacağıq.' 
+      {
+        success: true,
+        message: 'Mesajınız uğurla göndərildi. Tezliklə sizinlə əlaqə saxlayacağıq.'
       },
       { status: 200 }
     )
