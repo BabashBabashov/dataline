@@ -36,7 +36,7 @@ export function HeroSection() {
   return (
     <section className="relative">
       {/* Background Image Carousel with navy bottom strip */}
-      <div className="relative h-[534px]" style={{ width: 'calc(100% - 128px)', marginLeft: '128px' }}>
+      <div className="relative h-[534px]" style={{ width: 'calc(100% - 128px)', marginRight: '128px' }}>
         <Image
           src={slides[currentSlide].image}
           alt={slides[currentSlide].alt}
@@ -78,7 +78,7 @@ export function HeroSection() {
       </div>
 
       {/* Navy strip that the card will overlap */}
-      <div className="h-[15px] bg-primary" style={{ marginLeft: '128px', width: 'calc(100% - 128px)' }} />
+      <div className="h-[15px] bg-primary" style={{ marginRight: '128px', width: 'calc(100% - 128px)' }} />
 
       {/* Overlapping Content Card - positioned absolutely to span both sections */}
       <div className="absolute z-30 pointer-events-none right-0 md:right-[272px] top-[267px] md:top-[267px]">
