@@ -17,7 +17,11 @@ export function HeroSection() {
   const [cardVisible, setCardVisible] = useState(false)
 
   useEffect(() => {
-    setCardVisible(true)
+    const timer = setTimeout(() => {
+      setCardVisible(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
   }, [])
 
   const nextSlide = () => {
@@ -86,9 +90,10 @@ export function HeroSection() {
           className="overflow-hidden w-[90vw] md:w-[685px] h-[400px] md:h-[445px]"
         >
           <div
-            className={`pointer-events-auto transition-transform duration-1000 ease-out w-[90vw] md:w-[685px] h-[400px] md:h-[445px] ${
+            className={`pointer-events-auto transition-transform w-[90vw] md:w-[685px] h-[400px] md:h-[445px] ${
               cardVisible ? 'translate-x-0' : '-translate-x-full'
             }`}
+            style={{ transitionDuration: '1.5s', transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' }}
           >
             <div className="shadow-2xl h-full" style={{ backgroundColor: '#F2F2F2' }}>
               <div className="p-12 text-center flex flex-col justify-center h-full">
