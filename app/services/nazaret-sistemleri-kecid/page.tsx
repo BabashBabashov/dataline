@@ -1,17 +1,45 @@
+"use client"
+
 import Link from "next/link"
-import { ArrowLeft, CheckCircle2 } from "lucide-react"
+import Image from "next/image"
+import { ArrowLeft } from "lucide-react"
 import { ContactSection } from "@/components/contact-section"
+import { useState, useEffect } from "react"
 
 export default function NazaretSistemleriKecidPage() {
+  const [cardVisible, setCardVisible] = useState(false)
+  const [hoveredSection, setHoveredSection] = useState<'card' | null>(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCardVisible(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <main className="min-h-screen bg-background">
       {/* Banner Section with Card Starting from Navy Strip Middle */}
       <section className="relative">
-        {/* Banner Background */}
-        <div className="h-[220px] bg-gradient-to-br from-primary/20 to-primary/5" />
-        
-        {/* Blue Strip that card will overlap */}
-        <div className="h-40" style={{ backgroundColor: '#1A2B6D' }} />
+        {/* Banner Image */}
+        <div className="absolute right-0 top-0 bottom-0 h-[534px] md:h-[534px] h-[139px] md:w-[calc(100%-128px)] md:right-[128px] w-full right-0">
+          <Image
+            src="/images/services/nazaret-sistemleri-kecid.jpeg"
+            alt="Nəzarət Sistemləri (Keçid)"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-black/50 via-black/40 to-black/50" />
+          <div className="absolute inset-0 bg-primary/30" />
+        </div>
+
+        {/* Spacer for banner */}
+        <div className="h-[534px] md:h-[534px] h-[139px]" />
+
+        {/* Navy strip that the card will overlap */}
+        <div className="h-[15px] bg-primary mr-[128px] md:mr-[128px] mr-0" />
 
         {/* Back Link */}
         <div className="absolute top-4 left-4 z-20">
@@ -24,30 +52,32 @@ export default function NazaretSistemleriKecidPage() {
           </Link>
         </div>
 
-        {/* Overlapping Service Card - Starting from middle of navy strip */}
-        <div className="absolute left-0 right-0 top-[280px] md:top-[300px] z-10 pointer-events-none">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-center pointer-events-auto">
-              <div className="relative max-w-3xl w-full">
-                {/* Offset Frame */}
-                <div className="absolute inset-0 translate-x-2 translate-y-2 border border-primary-foreground/40 pointer-events-none" aria-hidden="true" />
-                
-                {/* Card */}
-                <div className="relative bg-background p-12 md:p-16 shadow-xl">
-                  <h1 className="text-2xl md:text-4xl font-semibold mb-4 leading-tight text-balance" style={{ color: '#1A2B6D' }}>
+        {/* Overlapping Content Card - positioned absolutely to span both sections */}
+        <div className="absolute z-30 pointer-events-none left-1/2 -translate-x-1/2 top-[418px] md:top-[418px] top-[90px]">
+          <div
+            className="overflow-hidden w-[729px] h-[263px] md:w-[729px] md:h-[263px] w-[273px] h-[98px]"
+          >
+            <div
+              className={`pointer-events-auto transition-transform w-[729px] h-[263px] md:w-[729px] md:h-[263px] w-[273px] h-[98px] ${
+                cardVisible ? 'translate-x-0' : '-translate-x-full'
+              }`}
+              style={{ transitionDuration: '1.5s', transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' }}
+            >
+              <div className="shadow-2xl h-full" style={{ backgroundColor: hoveredSection === 'card' ? '#E8E8E8' : '#F2F2F2' }}
+                   onMouseEnter={() => setHoveredSection('card')}
+                   onMouseLeave={() => setHoveredSection(null)}>
+                <div className="p-12 text-center flex flex-col justify-center h-full md:p-12 md:py-12 p-2 py-2">
+                  <h1 className="text-primary mb-4 text-balance font-spinaker md:text-[66px] text-[18px]">
                     Nəzarət Sistemləri (Keçid)
                   </h1>
-                  <p className="text-muted-foreground text-base leading-relaxed">
-                    Dataline şirkəti müasir Biometrik sistemlər, kartlı keçid, barmaq izi, üz tanıma ilə keçid sistemləri təklif edir. Ofislərdə qurulan bu sistem personalın işə davamiyyətinə nəzarət etməyə imkan verir.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Spacer to account for overlapping card */}
-        <div className="h-[180px]" />
+        {/* Spacer to account for overlapping card on mobile/desktop */}
+        <div className="h-[130px] md:h-[130px] h-[50px]" />
       </section>
 
       {/* Content Section */}
@@ -57,7 +87,7 @@ export default function NazaretSistemleriKecidPage() {
           {/* Introduction */}
           <div className="bg-secondary p-8 md:p-10 rounded-lg shadow-lg mb-12">
             <p className="text-lg leading-relaxed text-foreground">
-              Müasir keçid nəzarət sistemləri ilə obyektinizin təhlükəsizliyini artırın. Personalın işə giriş-çıxış saatlarına nəzarət edin və bütün məlumatları yadda saxlayın.
+              Dataline şirkəti müasir Biometrik sistemlər, kartlı keçid, barmaq izi, üz tanıma ilə keçid sistemləri təklif edir. Ofislərdə qurulan bu sistem personalın işə davamiyyətinə nəzarət etməyə imkan verir.
             </p>
           </div>
 
@@ -70,7 +100,7 @@ export default function NazaretSistemleriKecidPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-primary/5 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold text-primary mb-3 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-accent" />
+                  <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   Biometrik sistemlər
                 </h3>
                 <ul className="space-y-2 text-muted-foreground">
@@ -91,7 +121,7 @@ export default function NazaretSistemleriKecidPage() {
 
               <div className="bg-primary/5 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold text-primary mb-3 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-accent" />
+                  <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   Fiziki nəzarət sistemləri
                 </h3>
                 <ul className="space-y-2 text-muted-foreground">
@@ -122,30 +152,12 @@ export default function NazaretSistemleriKecidPage() {
               <h3 className="text-xl font-semibold text-primary mb-4">İmkanlar</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Girişlərin kart, barmaq izi, üz tanıma ilə edilməsi"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Gün ərzində neçə giriş-çıxış etdiklərinə nəzarət"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Gündəlik gecikmələri göstərilməsi"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Keçidlərə limitin qoyulması, keçidlərin günlərə görə nizamlanması"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Proqramın gündəlik, həftəlik, illik raporlarının verilməsi"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Məlumatların Excel və 1C proqramına ötürülməsi"
-                  }
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>, text: "Girişlərin kart, barmaq izi, üz tanıma ilə edilməsi" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>, text: "Gün ərzində neçə giriş-çıxış etdiklərinə nəzarət" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>, text: "Gündəlik gecikmələri göstərilməsi" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>, text: "Keçidlərə limitin qoyulması, keçidlərin günlərə görə nizamlanması" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>, text: "Proqramın gündəlik, həftəlik, illik raporlarının verilməsi" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>, text: "Məlumatların Excel və 1C proqramına ötürülməsi" }
                 ].map((feature, index) => (
                   <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg">
                     <div className="mt-0.5">{feature.icon}</div>
@@ -210,7 +222,7 @@ export default function NazaretSistemleriKecidPage() {
             <div className="space-y-4">
               <div className="bg-primary/5 p-6 rounded-lg">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" />
+                  <svg className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   <div>
                     <h3 className="text-lg font-semibold text-primary mb-2">1C proqramı ilə inteqrasiya</h3>
                     <p className="text-muted-foreground">
@@ -222,7 +234,7 @@ export default function NazaretSistemleriKecidPage() {
 
               <div className="bg-primary/5 p-6 rounded-lg">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" />
+                  <svg className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   <div>
                     <h3 className="text-lg font-semibold text-primary mb-2">Excel ixracı</h3>
                     <p className="text-muted-foreground">
@@ -234,7 +246,7 @@ export default function NazaretSistemleriKecidPage() {
 
               <div className="bg-primary/5 p-6 rounded-lg">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" />
+                  <svg className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   <div>
                     <h3 className="text-lg font-semibold text-primary mb-2">Müxtəlif raporlar</h3>
                     <p className="text-muted-foreground">

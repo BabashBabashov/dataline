@@ -1,17 +1,45 @@
+"use client"
+
 import Link from "next/link"
-import { ArrowLeft, CheckCircle2 } from "lucide-react"
+import Image from "next/image"
+import { ArrowLeft } from "lucide-react"
 import { ContactSection } from "@/components/contact-section"
+import { useState, useEffect } from "react"
 
 export default function NazaretSistemleriKameraPage() {
+  const [cardVisible, setCardVisible] = useState(false)
+  const [hoveredSection, setHoveredSection] = useState<'card' | null>(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCardVisible(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <main className="min-h-screen bg-background">
       {/* Banner Section with Card Starting from Navy Strip Middle */}
       <section className="relative">
-        {/* Banner Background */}
-        <div className="h-[220px] bg-gradient-to-br from-primary/20 to-primary/5" />
-        
-        {/* Blue Strip that card will overlap */}
-        <div className="h-40" style={{ backgroundColor: '#1A2B6D' }} />
+        {/* Banner Image */}
+        <div className="absolute right-0 top-0 bottom-0 h-[534px] md:h-[534px] h-[139px] md:w-[calc(100%-128px)] md:right-[128px] w-full right-0">
+          <Image
+            src="/images/services/nazaret-sistemleri-kamera.jpeg"
+            alt="Nəzarət Sistemləri (Kamera)"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-black/50 via-black/40 to-black/50" />
+          <div className="absolute inset-0 bg-primary/30" />
+        </div>
+
+        {/* Spacer for banner */}
+        <div className="h-[534px] md:h-[534px] h-[139px]" />
+
+        {/* Navy strip that the card will overlap */}
+        <div className="h-[15px] bg-primary mr-[128px] md:mr-[128px] mr-0" />
 
         {/* Back Link */}
         <div className="absolute top-4 left-4 z-20">
@@ -24,30 +52,32 @@ export default function NazaretSistemleriKameraPage() {
           </Link>
         </div>
 
-        {/* Overlapping Service Card - Starting from middle of navy strip */}
-        <div className="absolute left-0 right-0 top-[280px] md:top-[300px] z-10 pointer-events-none">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-center pointer-events-auto">
-              <div className="relative max-w-3xl w-full">
-                {/* Offset Frame */}
-                <div className="absolute inset-0 translate-x-2 translate-y-2 border border-primary-foreground/40 pointer-events-none" aria-hidden="true" />
-                
-                {/* Card */}
-                <div className="relative bg-background p-12 md:p-16 shadow-xl">
-                  <h1 className="text-2xl md:text-4xl font-semibold mb-4 leading-tight text-balance" style={{ color: '#1A2B6D' }}>
+        {/* Overlapping Content Card - positioned absolutely to span both sections */}
+        <div className="absolute z-30 pointer-events-none left-1/2 -translate-x-1/2 top-[418px] md:top-[418px] top-[90px]">
+          <div
+            className="overflow-hidden w-[729px] h-[263px] md:w-[729px] md:h-[263px] w-[273px] h-[98px]"
+          >
+            <div
+              className={`pointer-events-auto transition-transform w-[729px] h-[263px] md:w-[729px] md:h-[263px] w-[273px] h-[98px] ${
+                cardVisible ? 'translate-x-0' : '-translate-x-full'
+              }`}
+              style={{ transitionDuration: '1.5s', transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' }}
+            >
+              <div className="shadow-2xl h-full" style={{ backgroundColor: hoveredSection === 'card' ? '#E8E8E8' : '#F2F2F2' }}
+                   onMouseEnter={() => setHoveredSection('card')}
+                   onMouseLeave={() => setHoveredSection(null)}>
+                <div className="p-12 text-center flex flex-col justify-center h-full md:p-12 md:py-12 p-2 py-2">
+                  <h1 className="text-primary mb-4 text-balance font-spinaker md:text-[66px] text-[18px]">
                     Nəzarət Sistemləri (Kamera)
                   </h1>
-                  <p className="text-muted-foreground text-base leading-relaxed">
-                    Dataline şirkəti tərəfindən kamera video müşahidə sistemlərinin peşəkar quraşdırılması həyata keçirilir. İstənilən nöqtədən internet üzərindən interaktiv İP domofonlar və kameralar vasitəsi ilə nəzarət etmə imkanı yaradılır.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Spacer to account for overlapping card */}
-        <div className="h-[180px]" />
+        {/* Spacer to account for overlapping card on mobile/desktop */}
+        <div className="h-[130px] md:h-[130px] h-[50px]" />
       </section>
 
       {/* Content Section */}
@@ -57,7 +87,7 @@ export default function NazaretSistemleriKameraPage() {
           {/* Introduction */}
           <div className="bg-secondary p-8 md:p-10 rounded-lg shadow-lg mb-12">
             <p className="text-lg leading-relaxed text-foreground">
-              Müasir texnologiyalar və yüksək keyfiyyətli avadanlıqlar vasitəsi ilə obyektinizin təhlükəsizliyini maksimum səviyyəyə qaldırırıq.
+              Dataline şirkəti tərəfindən kamera video müşahidə sistemlərinin peşəkar quraşdırılması həyata keçirilir. İstənilən nöqtədən internet üzərindən interaktiv İP domofonlar və kameralar vasitəsi ilə nəzarət etmə imkanı yaradılır.
             </p>
           </div>
 
@@ -200,30 +230,12 @@ export default function NazaretSistemleriKameraPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Uzaqdan giriş nəzarəti"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Video danışıq funksiyası"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Mobil tətbiq dəstəyi"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Tarixçə qeydiyyatı"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Birdən çox giriş nöqtəsi"
-                  },
-                  {
-                    icon: <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />,
-                    text: "Şəbəkə üzərindən qoşulma"
-                  }
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>, text: "Uzaqdan giriş nəzarəti" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>, text: "Video danışıq funksiyası" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>, text: "Mobil tətbiq dəstəyi" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>, text: "Tarixçə qeydiyyatı" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>, text: "Birdən çox giriş nöqtəsi" },
+                  { icon: <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>, text: "Şəbəkə üzərindən qoşulma" }
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center gap-2">
                     {feature.icon}
@@ -243,32 +255,32 @@ export default function NazaretSistemleriKameraPage() {
             <div className="space-y-4">
               {[
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>,
                   title: "Uzaqdan nəzarət",
                   description: "İnternet üzərindən istənilən nöqtədən kameralara baxma və idarə etmə imkanı"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>,
                   title: "Yüksək keyfiyyət",
                   description: "Full HD və 4K qətnamə ilə aydın və detallı şəkil"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
                   title: "Sürətli quraşdırma",
                   description: "Professional əməkdaşlarımız tərəfindən sürətli və keyfiyyətli quraşdırma"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
                   title: "Mobil dəstək",
                   description: "Smartfon və tabletinizdən nəzarət etmə imkanı"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>,
                   title: "Avtomatik qeydiyyat",
                   description: "Davamlı və hərəkətə görə qeydiyyat funksiyası"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>,
                   title: "Gecə görünüşü",
                   description: "IR LED ilə qaranlıq mühitdə də aydın görüntü"
                 }
@@ -299,30 +311,22 @@ export default function NazaretSistemleriKameraPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {[
                 {
-                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>,
-                  title: "Ev və mnzil",
+                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>,
+                  title: "Ev və mənzil",
                   description: "Mənzil və evlər üçün"
                 },
                 {
-                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>,
+                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
                   title: "Ofislər",
                   description: "Biznes mərkəzləri"
                 },
                 {
-                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                  </svg>,
+                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>,
                   title: "Mağazalar",
                   description: "Ticarət obyektləri"
                 },
                 {
-                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                  </svg>,
+                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" /></svg>,
                   title: "Anbarlar",
                   description: "Sənaye obyektləri"
                 }

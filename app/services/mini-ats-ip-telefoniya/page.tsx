@@ -1,18 +1,45 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, CheckCircle2 } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { ContactSection } from "@/components/contact-section"
+import { useState, useEffect } from "react"
 
 export default function MiniAtsIpTelefoniyaPage() {
+  const [cardVisible, setCardVisible] = useState(false)
+  const [hoveredSection, setHoveredSection] = useState<'card' | null>(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCardVisible(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <main className="min-h-screen bg-background">
       {/* Banner Section with Card Starting from Navy Strip Middle */}
       <section className="relative">
-        {/* Banner Background */}
-        <div className="h-[220px] bg-gradient-to-br from-primary/20 to-primary/5" />
-        
-        {/* Blue Strip that card will overlap */}
-        <div className="h-40" style={{ backgroundColor: '#1A2B6D' }} />
+        {/* Banner Image */}
+        <div className="absolute right-0 top-0 bottom-0 h-[534px] md:h-[534px] h-[139px] md:w-[calc(100%-128px)] md:right-[128px] w-full right-0">
+          <Image
+            src="/images/services/mini-ats-ip-telefoniya.jpg"
+            alt="Mini ATS və İP Telefoniya"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-black/50 via-black/40 to-black/50" />
+          <div className="absolute inset-0 bg-primary/30" />
+        </div>
+
+        {/* Spacer for banner */}
+        <div className="h-[534px] md:h-[534px] h-[139px]" />
+
+        {/* Navy strip that the card will overlap */}
+        <div className="h-[15px] bg-primary mr-[128px] md:mr-[128px] mr-0" />
 
         {/* Back Link */}
         <div className="absolute top-4 left-4 z-20">
@@ -25,30 +52,32 @@ export default function MiniAtsIpTelefoniyaPage() {
           </Link>
         </div>
 
-        {/* Overlapping Service Card - Starting from middle of navy strip */}
-        <div className="absolute left-0 right-0 top-[280px] md:top-[300px] z-10 pointer-events-none">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-center pointer-events-auto">
-              <div className="relative max-w-3xl w-full">
-                {/* Offset Frame */}
-                <div className="absolute inset-0 translate-x-2 translate-y-2 border border-primary-foreground/40 pointer-events-none" aria-hidden="true" />
-                
-                {/* Card */}
-                <div className="relative bg-background p-12 md:p-16 shadow-xl">
-                  <h1 className="text-2xl md:text-4xl font-semibold mb-4 leading-tight text-balance" style={{ color: '#1A2B6D' }}>
+        {/* Overlapping Content Card - positioned absolutely to span both sections */}
+        <div className="absolute z-30 pointer-events-none left-1/2 -translate-x-1/2 top-[418px] md:top-[418px] top-[90px]">
+          <div
+            className="overflow-hidden w-[729px] h-[263px] md:w-[729px] md:h-[263px] w-[273px] h-[98px]"
+          >
+            <div
+              className={`pointer-events-auto transition-transform w-[729px] h-[263px] md:w-[729px] md:h-[263px] w-[273px] h-[98px] ${
+                cardVisible ? 'translate-x-0' : '-translate-x-full'
+              }`}
+              style={{ transitionDuration: '1.5s', transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' }}
+            >
+              <div className="shadow-2xl h-full" style={{ backgroundColor: hoveredSection === 'card' ? '#E8E8E8' : '#F2F2F2' }}
+                   onMouseEnter={() => setHoveredSection('card')}
+                   onMouseLeave={() => setHoveredSection(null)}>
+                <div className="p-12 text-center flex flex-col justify-center h-full md:p-12 md:py-12 p-2 py-2">
+                  <h1 className="text-primary mb-4 text-balance font-spinaker md:text-[66px] text-[18px]">
                     Mini ATS və İP Telefoniya
                   </h1>
-                  <p className="text-muted-foreground text-base leading-relaxed">
-                    Dataline şirkəti sizə ən müasir mini ATS və İP telefoniya sistemlərinin satışını, quraşdırılması və inteqrasiyasını təklif edir. Hətta dünyanın müxtəlif yerlərində olsanız belə ofislərinizlə daxili nömrənizlə əlaqə yarada bilərsiniz.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Spacer to account for overlapping card */}
-        <div className="h-[180px]" />
+        {/* Spacer to account for overlapping card on mobile/desktop */}
+        <div className="h-[130px] md:h-[130px] h-[50px]" />
       </section>
 
       {/* Content Section */}
@@ -58,7 +87,7 @@ export default function MiniAtsIpTelefoniyaPage() {
           {/* Introduction */}
           <div className="bg-secondary p-8 md:p-10 rounded-lg shadow-lg mb-12">
             <p className="text-lg leading-relaxed text-foreground">
-              Müasir rabitə həlləri ilə ofisinizdə səmərəli kommunikasiya yaradın. Təklif etdiyimiz sistemlərlə rahat rabitə əlaqəsinə sahib olacaqsınız.
+              Dataline şirkəti sizə ən müasir mini ATS və İP telefoniya sistemlərinin satışını, quraşdırılması və inteqrasiyasını təklif edir. Hətta dünyanın müxtəlif yerlərində olsanız belə ofislərinizlə daxili nömrənizlə əlaqə yarada bilərsiniz.
             </p>
           </div>
 
@@ -239,32 +268,32 @@ export default function MiniAtsIpTelefoniyaPage() {
             <div className="space-y-4">
               {[
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                   title: "Daxili nömrələr",
                   description: "Ofis daxilində pulsuz daxili zənglər və rabitə"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                   title: "Qeyri-məhdud zonalar",
                   description: "Dünyanın hər yerindən ofislərlə əlaqə qurma imkanı"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>,
                   title: "Yüksək keyfiyyət",
                   description: "HD səs keyfiyyəti və aydın rabitə"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
                   title: "Avtomatlaşdırma",
                   description: "Zənglərin avtomatik yönləndirilməsi və cavablandırılması"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>,
                   title: "Qeydiyyat və hesabat",
                   description: "Bütün zənglərin tarixçəsi və hesabatlığı"
                 },
                 {
-                  icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />,
+                  icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>,
                   title: "Asan inteqrasiya",
                   description: "Mövcud sistemlərlə asan inteqrasiya və genişlənmə imkanı"
                 }
@@ -295,30 +324,22 @@ export default function MiniAtsIpTelefoniyaPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {[
                 {
-                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>,
+                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
                   title: "Ofislər",
                   description: "Korporativ rabitə"
                 },
                 {
-                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                  </svg>,
+                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>,
                   title: "Mağazalar",
                   description: "Satış nöqtələri"
                 },
                 {
-                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>,
+                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
                   title: "Hotellər",
                   description: "Mehmanxana sistemləri"
                 },
                 {
-                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>,
+                  icon: <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>,
                   title: "Səhiyyə",
                   description: "Klinika və xəstəxanalar"
                 }

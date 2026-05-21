@@ -1,17 +1,45 @@
+"use client"
+
 import Link from "next/link"
-import { ArrowLeft, CheckCircle2 } from "lucide-react"
+import Image from "next/image"
+import { ArrowLeft } from "lucide-react"
 import { ContactSection } from "@/components/contact-section"
+import { useState, useEffect } from "react"
 
 export default function SesSistemleriPage() {
+  const [cardVisible, setCardVisible] = useState(false)
+  const [hoveredSection, setHoveredSection] = useState<'card' | null>(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCardVisible(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <main className="min-h-screen bg-background">
       {/* Banner Section with Card Starting from Navy Strip Middle */}
       <section className="relative">
-        {/* Banner Background */}
-        <div className="h-[220px] bg-gradient-to-br from-primary/20 to-primary/5" />
-        
-        {/* Blue Strip that card will overlap */}
-        <div className="h-40" style={{ backgroundColor: '#1A2B6D' }} />
+        {/* Banner Image */}
+        <div className="absolute right-0 top-0 bottom-0 h-[534px] md:h-[534px] h-[139px] md:w-[calc(100%-128px)] md:right-[128px] w-full right-0">
+          <Image
+            src="/images/services/ses-sistemleri.jpg"
+            alt="Səs Sistemləri"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-black/50 via-black/40 to-black/50" />
+          <div className="absolute inset-0 bg-primary/30" />
+        </div>
+
+        {/* Spacer for banner */}
+        <div className="h-[534px] md:h-[534px] h-[139px]" />
+
+        {/* Navy strip that the card will overlap */}
+        <div className="h-[15px] bg-primary mr-[128px] md:mr-[128px] mr-0" />
 
         {/* Back Link */}
         <div className="absolute top-4 left-4 z-20">
@@ -24,30 +52,32 @@ export default function SesSistemleriPage() {
           </Link>
         </div>
 
-        {/* Overlapping Service Card - Starting from middle of navy strip */}
-        <div className="absolute left-0 right-0 top-[280px] md:top-[300px] z-10 pointer-events-none">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-center pointer-events-auto">
-              <div className="relative max-w-3xl w-full">
-                {/* Offset Frame */}
-                <div className="absolute inset-0 translate-x-2 translate-y-2 border border-primary-foreground/40 pointer-events-none" aria-hidden="true" />
-                
-                {/* Card */}
-                <div className="relative bg-background p-12 md:p-16 shadow-xl">
-                  <h1 className="text-2xl md:text-4xl font-semibold mb-4 leading-tight text-balance" style={{ color: '#1A2B6D' }}>
+        {/* Overlapping Content Card - positioned absolutely to span both sections */}
+        <div className="absolute z-30 pointer-events-none left-1/2 -translate-x-1/2 top-[418px] md:top-[418px] top-[90px]">
+          <div
+            className="overflow-hidden w-[729px] h-[263px] md:w-[729px] md:h-[263px] w-[273px] h-[98px]"
+          >
+            <div
+              className={`pointer-events-auto transition-transform w-[729px] h-[263px] md:w-[729px] md:h-[263px] w-[273px] h-[98px] ${
+                cardVisible ? 'translate-x-0' : '-translate-x-full'
+              }`}
+              style={{ transitionDuration: '1.5s', transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' }}
+            >
+              <div className="shadow-2xl h-full" style={{ backgroundColor: hoveredSection === 'card' ? '#E8E8E8' : '#F2F2F2' }}
+                   onMouseEnter={() => setHoveredSection('card')}
+                   onMouseLeave={() => setHoveredSection(null)}>
+                <div className="p-12 text-center flex flex-col justify-center h-full md:p-12 md:py-12 p-2 py-2">
+                  <h1 className="text-primary mb-4 text-balance font-spinaker md:text-[66px] text-[18px]">
                     Səs Sistemləri
                   </h1>
-                  <p className="text-muted-foreground text-base leading-relaxed">
-                    Dataline MMC olaraq obyektlər üçün müasir və etibarlı səs və musiqi sistemlərinin layihələndirilməsi, quraşdırılması və texniki xidməti sahəsində kompleks həllər təqdim edirik.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Spacer to account for overlapping card */}
-        <div className="h-[180px]" />
+        {/* Spacer to account for overlapping card on mobile/desktop */}
+        <div className="h-[130px] md:h-[130px] h-[50px]" />
       </section>
 
       {/* Content Section */}
@@ -57,7 +87,7 @@ export default function SesSistemleriPage() {
           {/* Introduction */}
           <div className="bg-secondary p-8 md:p-10 rounded-lg shadow-lg mb-12">
             <p className="text-lg leading-relaxed text-foreground">
-              Sistemlər məkanın təyinatına, sahəsinə və akustik xüsusiyyətlərinə uyğun şəkildə seçilir və konfiqurasiya olunur. Məqsədimiz – obyekt daxilində aydın, balanslı və keyfiyyətli səs mühitinin yaradılmasıdır.
+              Dataline MMC olaraq obyektlər üçün müasir və etibarlı səs və musiqi sistemlərinin layihələndirilməsi, quraşdırılması və texniki xidməti sahəsində kompleks həllər təqdim edirik.
             </p>
           </div>
 
@@ -93,10 +123,10 @@ export default function SesSistemleriPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />, title: "Tavan və divar tipli kolonların montajı", description: "Məkanın dizaynına uyğun müxtəlif tipli akustik sistemlərin quraşdırılması" },
-                { icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />, title: "Multi-zone (çox zonalı) sistemlər", description: "Fərqli zonalar üçün ayrı-ayrı idarə oluna bilən səs sistemləri" },
-                { icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />, title: "Mərkəzləşdirilmiş və lokal idarəetmə", description: "Bütün sistemin və ya ayrı zonaların mərkəzdən və ya yerindən idarə olunması" },
-                { icon: <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0" />, title: "Bluetooth, USB və IP audio inteqrasiyası", description: "Müasir bağlantı texnologiyaları ilə wireless və kabel bağlantı imkanları" }
+                { icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>, title: "Tavan və divar tipli kolonların montajı", description: "Məkanın dizaynına uyğun müxtəlif tipli akustik sistemlərin quraşdırılması" },
+                { icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>, title: "Multi-zone (çox zonalı) sistemlər", description: "Fərqli zonalar üçün ayrı-ayrı idarə oluna bilən səs sistemləri" },
+                { icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>, title: "Mərkəzləşdirilmiş və lokal idarəetmə", description: "Bütün sistemin və ya ayrı zonaların mərkəzdən və ya yerindən idarə olunması" },
+                { icon: <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>, title: "Bluetooth, USB və IP audio inteqrasiyası", description: "Müasir bağlantı texnologiyaları ilə wireless və kabel bağlantı imkanları" }
               ].map((service, index) => (
                 <div key={index} className="bg-secondary p-6 rounded-lg">
                   <div className="flex items-start gap-3">
