@@ -40,7 +40,7 @@ export function HeroSection() {
   return (
     <section className="relative">
       {/* Background Image Carousel with navy bottom strip */}
-      <div className="relative h-[534px]" style={{ width: 'calc(100% - 128px)', marginRight: '128px' }}>
+      <div className="relative h-[534px] w-full md:w-[calc(100%-128px)] md:mr-[128px]">
         <Image
           src={slides[currentSlide].image}
           alt={slides[currentSlide].alt}
@@ -82,10 +82,10 @@ export function HeroSection() {
       </div>
 
       {/* Navy strip that the card will overlap */}
-      <div className="h-[15px] bg-primary" style={{ marginRight: '128px', width: 'calc(100% - 128px)' }} />
+      <div className="h-[15px] bg-primary w-full md:w-[calc(100%-128px)] md:mr-[128px]" />
 
       {/* Overlapping Content Card - positioned absolutely to span both sections */}
-      <div className="absolute z-30 pointer-events-none right-0 md:right-[272px] top-[267px] md:top-[267px]">
+      <div className="absolute z-30 pointer-events-none right-0 md:right-[272px] top-1/2 -translate-y-1/2 md:top-[267px] md:translate-y-0">
         <div
           className="overflow-hidden w-[90vw] md:w-[685px] h-[400px] md:h-[445px]"
         >
@@ -113,7 +113,7 @@ export function HeroSection() {
       </div>
 
       {/* Button box outside card at bottom right */}
-      <div className="absolute z-30 pointer-events-auto inline-flex shadow-lg right-0 md:right-[272px] top-[calc(267px+400px)] md:top-[calc(267px+445px)]">
+      <div className="absolute z-30 pointer-events-auto inline-flex shadow-lg right-0 md:right-[272px] top-[calc(100%-6rem)] md:top-[calc(267px+445px)] transform -translate-y-1/2 md:translate-y-0">
             <Link href="/services" className="inline-flex">
               {/* Left: Blue square with + */}
               <div
