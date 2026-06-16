@@ -52,11 +52,11 @@ function ServiceCard({
         aria-hidden="true"
       />
       {/* Card content */}
-      <div className="relative bg-secondary p-6 md:p-8">
-        <h3 className="text-xl font-semibold text-primary mb-4 leading-tight">
+      <div className="relative bg-secondary p-5 sm:p-6 md:p-8">
+        <h3 className="text-lg sm:text-xl font-semibold text-primary mb-3 sm:mb-4 leading-tight">
           {title}
         </h3>
-        <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+        <p className="text-muted-foreground text-sm leading-relaxed mb-4 sm:mb-6">
           {description}
         </p>
         <Link
@@ -74,10 +74,10 @@ export function ServicesSection() {
   return (
     <section id="services">
       {/* Navy section: heading + description only */}
-      <div className="bg-primary pt-16 md:pt-20 pb-0">
+      <div className="bg-primary pt-12 sm:pt-16 md:pt-20 pb-0">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
               XİDMƏTLƏR
             </h2>
             <p className="text-primary-foreground/80 text-sm max-w-xl leading-relaxed">
@@ -94,9 +94,9 @@ export function ServicesSection() {
           aria-hidden="true"
         />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-background" aria-hidden="true" />
-        <div className="relative container mx-auto px-4 pt-12 md:pt-16 pb-12 md:pb-16">
+        <div className="relative container mx-auto px-4 pt-8 sm:pt-12 md:pt-16 pb-8 sm:pb-12 md:pb-16">
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 items-start">
               {topServices.map((service) => (
                 <ServiceCard
                   key={service.title}
@@ -111,10 +111,10 @@ export function ServicesSection() {
       </div>
 
       {/* White section: second row of cards */}
-      <div className="bg-background pt-8 md:pt-12 pb-16 md:pb-24">
+      <div className="bg-background pt-6 sm:pt-8 md:pt-12 pb-12 sm:pb-16 md:pb-24">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 items-start">
               {bottomServices.map((service) => (
                 <ServiceCard
                   key={service.title}

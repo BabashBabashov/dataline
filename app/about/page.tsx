@@ -20,31 +20,30 @@ export default function AboutPage() {
       {/* Hero Section with Background Image */}
       <section className="relative">
         {/* Background Image */}
-        <div className="absolute right-0 top-0 bottom-0 h-[534px]" style={{ width: 'calc(100% - 128px)', right: '128px' }}>
+        <div className="relative lg:absolute lg:right-[128px] lg:top-0 lg:bottom-0 h-[250px] sm:h-[350px] md:h-[450px] lg:h-[534px] w-full lg:w-[calc(100%-128px)]">
           <Image
             src="/images/certificates/banner1.svg"
             alt="Dataline MMC - Niyə Biz"
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-primary/5" />
         </div>
         
         {/* Spacer for banner */}
-        <div className="h-[534px]" />
+        <div className="h-[250px] sm:h-[350px] md:h-[450px] lg:h-[534px]" />
 
-        {/* Navy strip that the card will overlap */}
-        <div className="h-[15px] bg-primary mr-[128px]" />
+        {/* Navy strip */}
+        <div className="h-[10px] sm:h-[15px] bg-primary lg:mr-[128px]" />
 
         {/* Centered overlapping card */}
-        <div className="absolute z-10 pointer-events-none right-0 md:right-[272px] top-[267px]">
-          <div className="pointer-events-auto">
-            <div
-              className="overflow-hidden w-[90vw] md:w-[685px] h-[400px] md:h-[445px]"
-            >
+        <div className="relative lg:absolute z-10 lg:pointer-events-none lg:right-0 lg:md:right-[272px] lg:top-[267px] -mt-8 sm:-mt-12 lg:mt-0 px-4 sm:px-6 lg:px-0">
+          <div className="lg:pointer-events-auto">
+            <div className="overflow-hidden w-full max-w-[90vw] sm:max-w-[600px] lg:w-[685px] mx-auto lg:mx-0">
               <div
-                className={`shadow-2xl h-full transition-transform w-[90vw] md:w-[685px] h-[400px] md:h-[445px] ${
+                className={`shadow-2xl transition-transform ${
                   cardVisible ? 'translate-x-0' : '-translate-x-full'
                 }`}
                 style={{
@@ -56,10 +55,10 @@ export default function AboutPage() {
                 onMouseEnter={() => setHoveredSection('card')}
                 onMouseLeave={() => setHoveredSection(null)}
               >
-                <div className="p-12 text-center flex flex-col justify-center h-full">
-                  <div className="w-16 h-0.5 bg-primary mb-6 mx-auto transition-all duration-300"
+                <div className="p-6 sm:p-8 md:p-12 text-center flex flex-col justify-center min-h-[250px] sm:min-h-[300px] md:min-h-[400px] lg:h-[445px]">
+                  <div className="w-12 sm:w-16 h-0.5 bg-primary mb-4 sm:mb-6 mx-auto transition-all duration-300"
                        style={{ width: hoveredSection === 'card' ? '120px' : '64px' }} />
-                  <h1 className="text-3xl md:text-5xl font-bold text-primary leading-tight text-balance">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight text-balance">
                     NİYƏ BİZ
                   </h1>
                 </div>
@@ -68,67 +67,67 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Spacer to account for overlapping card */}
-        <div className="h-[280px] md:h-[320px]" />
+        {/* Spacer */}
+        <div className="h-[180px] sm:h-[220px] md:h-[280px] lg:h-[320px]" />
       </section>
 
       {/* About Content */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-secondary p-8 md:p-12 rounded-lg shadow-lg">
-            <p className="text-lg md:text-xl leading-relaxed text-foreground text-justify">
+          <div className="bg-secondary p-6 sm:p-8 md:p-12 rounded-lg shadow-lg">
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed text-foreground text-justify">
               2015-ci ildə yaradılmış Dataline şirkəti qısa müddət ərzində İT autsorsinq, İT xidmətlərinin göstərilməsi, sistem inteqrasiyası, serverlərin qurulması, nəzarət sistemləri, kommunikasiya üzrə ixtisaslaşıb və öz müştərilərinə xidmət göstərməkdədir. Şirkətimiz yüksək ixtisaslı təcrübəli gənc mütəxəssislərdən təşkil olunmuşdur. Şirkətimizin əsas məqsədi müştərilərə keyfiyyətli İT autsorsinq təklif etməkdir. Şirkətimiz cavan olmasına baxmayaraq müştərilərimiz ilə şəffaf və möhkəm əlaqəlar qurur və Dataline brendini etibarlı tərəfdaş kimi formalaşdırmağa səy göstəririk. Biz hər bir müştərimizə fərdi şəkildə yanaşırıq.
             </p>
           </div>
 
           {/* Key Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-10 sm:mt-16">
+            <div className="text-center p-4 sm:p-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-primary mb-2">Keyfiyyətli Xidmət</h3>
-              <p className="text-muted-foreground">Yüksək standartlara uyğun peşəkar həllər</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-primary mb-2">Keyfiyyətli Xidmət</h3>
+              <p className="text-muted-foreground text-sm sm:text-base">Yüksək standartlara uyğun peşəkar həllər</p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center p-4 sm:p-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-primary mb-2">Peşəkar Komanda</h3>
-              <p className="text-muted-foreground">Təcrübəli gənc mütəxəssislər</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-primary mb-2">Peşəkar Komanda</h3>
+              <p className="text-muted-foreground text-sm sm:text-base">Təcrübəli gənc mütəxəssislər</p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center p-4 sm:p-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-primary mb-2">2015-ci ildən</h3>
-              <p className="text-muted-foreground">İllərdir təcrübə və etibar</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-primary mb-2">2015-ci ildən</h3>
+              <p className="text-muted-foreground text-sm sm:text-base">İllərdir təcrübə və etibar</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Certificates Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
         <div className="container mx-auto px-4">
           {/* Separator Line */}
-          <div className="w-full h-px bg-border mb-16" />
+          <div className="w-full h-px bg-border mb-10 sm:mb-16" />
 
           {/* Section Title */}
-          <h2 className="text-4xl md:text-5xl font-bold text-primary text-center mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary text-center mb-10 sm:mb-16">
             SERTİFİKATLAR
           </h2>
 
           {/* Certificates Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
             {[
               'cisco.png',
               'mcsa.png',
@@ -150,7 +149,7 @@ export default function AboutPage() {
                   width={300}
                   height={400}
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                   unoptimized
                 />
               </div>

@@ -21,31 +21,30 @@ export default function ServicesPage() {
       {/* Hero Section with Background Image */}
       <section className="relative">
         {/* Background Image */}
-        <div className="absolute right-0 top-0 bottom-0 h-[534px]" style={{ width: 'calc(100% - 128px)', right: '128px' }}>
+        <div className="relative lg:absolute lg:right-[128px] lg:top-0 lg:bottom-0 h-[250px] sm:h-[350px] md:h-[450px] lg:h-[534px] w-full lg:w-[calc(100%-128px)]">
           <Image
             src="/images/services/banner1.jpg"
             alt="Dataline MMC - Xidmətlər"
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-primary/5" />
         </div>
         
         {/* Spacer for banner */}
-        <div className="h-[534px]" />
+        <div className="h-[250px] sm:h-[350px] md:h-[450px] lg:h-[534px]" />
 
-        {/* Navy strip that the card will overlap */}
-        <div className="h-[15px] bg-primary mr-[128px]" />
+        {/* Navy strip */}
+        <div className="h-[10px] sm:h-[15px] bg-primary lg:mr-[128px]" />
 
-        {/* Centered overlapping card - overlaps banner, navy strip, and white background */}
-        <div className="absolute z-10 pointer-events-none right-0 md:right-[272px] top-[267px]">
-          <div className="pointer-events-auto">
-            <div
-              className="overflow-hidden w-[90vw] md:w-[685px] h-[400px] md:h-[445px]"
-            >
+        {/* Centered overlapping card */}
+        <div className="relative lg:absolute z-10 lg:pointer-events-none lg:right-0 lg:md:right-[272px] lg:top-[267px] -mt-8 sm:-mt-12 lg:mt-0 px-4 sm:px-6 lg:px-0">
+          <div className="lg:pointer-events-auto">
+            <div className="overflow-hidden w-full max-w-[90vw] sm:max-w-[600px] lg:w-[685px] mx-auto lg:mx-0">
               <div
-                className={`shadow-2xl h-full transition-transform w-[90vw] md:w-[685px] h-[400px] md:h-[445px] ${
+                className={`shadow-2xl transition-transform ${
                   cardVisible ? 'translate-x-0' : '-translate-x-full'
                 }`}
                 style={{
@@ -57,13 +56,13 @@ export default function ServicesPage() {
                 onMouseEnter={() => setHoveredSection('card')}
                 onMouseLeave={() => setHoveredSection(null)}
               >
-                <div className="p-12 text-center flex flex-col justify-center h-full">
-                  <div className="w-16 h-0.5 bg-primary mb-6 mx-auto transition-all duration-300"
+                <div className="p-6 sm:p-8 md:p-12 text-center flex flex-col justify-center min-h-[250px] sm:min-h-[300px] md:min-h-[400px] lg:h-[445px]">
+                  <div className="w-12 sm:w-16 h-0.5 bg-primary mb-4 sm:mb-6 mx-auto transition-all duration-300"
                        style={{ width: hoveredSection === 'card' ? '120px' : '64px' }} />
-                  <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight text-balance">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight text-balance">
                     XİDMƏTLƏR
                   </h1>
-                  <p className="text-muted-foreground text-base mt-4">
+                  <p className="text-muted-foreground text-sm sm:text-base mt-3 sm:mt-4">
                     Peşəkar həllər və keyfiyyətli xidmətlər
                   </p>
                 </div>
@@ -72,21 +71,21 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        {/* Spacer to account for overlapping card */}
-        <div className="h-[280px] md:h-[320px]" />
+        {/* Spacer */}
+        <div className="h-[180px] sm:h-[220px] md:h-[280px] lg:h-[320px]" />
       </section>
 
       {/* Services Content */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-secondary p-8 text-center flex flex-col justify-center items-center rounded-lg shadow-lg mb-16 min-h-[200px]">
-            <p className="text-lg md:text-xl leading-relaxed text-foreground text-justify">
+          <div className="bg-secondary p-6 sm:p-8 text-center flex flex-col justify-center items-center rounded-lg shadow-lg mb-10 sm:mb-16 min-h-[150px] sm:min-h-[200px]">
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed text-foreground text-justify">
               Biz əminik ki, tez bir zamanda sizin problemlərinizi həll edib sizə ən yaxşı xidmətləri təqdim edəcəyik. Siz asanlıqla problemlərinizi bizim şirkətə etibar edə bilərsiniz.
             </p>
           </div>
 
           {/* Services List */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {[
               {
                 title: "IT Autsorsinq",
@@ -164,18 +163,18 @@ export default function ServicesPage() {
                 description: "Müasir mini ATS və İP telefoniya sistemləri. Dünyanın hər yerindən ofislərlə əlaqə. Daxili nömrələr və rahat rabitə. Yüksək keyfiyyətli quraşdırılma.\n\nHəmişə əlaqədə qalın."
               }
             ].map((service, index) => (
-              <div key={index} className="bg-secondary rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
-                <h3 className="text-lg font-bold text-primary mb-2">
+              <div key={index} className="bg-secondary rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-bold text-primary mb-2">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line mb-4">
+                <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed whitespace-pre-line mb-3 sm:mb-4">
                   {service.description}
                 </p>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="inline-flex items-center gap-2 text-accent text-sm font-medium hover:underline"
+                  className="inline-flex items-center gap-2 text-accent text-xs sm:text-sm font-medium hover:underline"
                 >
-                  <span className="text-lg">+</span> Daha çox öyrən
+                  <span className="text-base sm:text-lg">+</span> Daha çox öyrən
                 </Link>
               </div>
             ))}
