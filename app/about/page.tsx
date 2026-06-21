@@ -20,7 +20,7 @@ export default function AboutPage() {
       {/* Hero Section with Background Image */}
       <section className="relative">
         {/* Background Image */}
-        <div className="relative lg:absolute lg:right-[128px] lg:top-0 lg:bottom-0 h-[250px] sm:h-[350px] md:h-[450px] lg:h-[534px] w-full lg:w-[calc(100%-128px)]">
+        <div className="absolute left-0 lg:right-[128px] top-0 h-[250px] sm:h-[350px] md:h-[450px] lg:h-[534px] w-full lg:w-[calc(100%-128px)]">
           <Image
             src="/images/certificates/banner1.svg"
             alt="Dataline MMC - Niyə Biz"

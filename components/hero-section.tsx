@@ -20,7 +20,7 @@ export function HeroSection() {
     const timer = setTimeout(() => {
       setCardVisible(true)
     }, 100)
-    
+
     return () => clearTimeout(timer)
   }, [])
 
@@ -50,7 +50,7 @@ export function HeroSection() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-primary/5" />
-        
+
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
@@ -85,14 +85,19 @@ export function HeroSection() {
       {/* Navy strip */}
       <div className="h-[10px] sm:h-[15px] bg-primary w-full lg:w-[calc(100%-128px)] lg:mr-[128px]" />
 
-      {/* Overlapping Content Card */}
-      <div className="relative lg:absolute lg:z-30 lg:pointer-events-none lg:right-0 lg:md:right-[272px] lg:top-1/2 lg:-translate-y-1/2 lg:md:top-[267px] lg:md:translate-y-0 -mt-8 sm:-mt-12 lg:mt-0 px-4 sm:px-6 lg:px-0">
-        <div className="overflow-hidden w-full max-w-[90vw] sm:max-w-[600px] lg:w-[685px] mx-auto lg:mx-0">
+      {/* Content Card - below navy strip with slide-up animation */}
+      <div className="relative px-4 sm:px-6 lg:px-0">
+        <div className="overflow-hidden w-full lg:w-[calc(100%-128px)] lg:mr-[128px] mx-auto">
           <div
-            className={`pointer-events-auto transition-transform ${
-              cardVisible ? 'translate-x-0' : '-translate-x-full'
+            className={`pointer-events-auto transition-all ${
+              cardVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-16'
             }`}
-            style={{ transitionDuration: '1.5s', transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)' }}
+            style={{
+              transitionDuration: '1.2s',
+              transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)',
+            }}
           >
             <div className="shadow-2xl" style={{ backgroundColor: '#F2F2F2' }}>
               <div className="p-6 sm:p-8 md:p-12 text-center flex flex-col justify-center">
@@ -107,39 +112,39 @@ export function HeroSection() {
                 </p>
               </div>
             </div>
+
+            {/* Button box - attached to bottom-right of card */}
+            <div className="flex justify-end">
+              <Link href="/services" className="inline-flex shadow-lg">
+                {/* Left: Blue square with + */}
+                <div
+                  className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 text-primary-foreground transition-colors ${
+                    hoveredSection === 'plus' ? 'bg-red-600' : hoveredSection === 'text' ? 'bg-primary' : 'bg-primary'
+                  }`}
+                  onMouseEnter={() => setHoveredSection('plus')}
+                  onMouseLeave={() => setHoveredSection(null)}
+                >
+                  <Plus className="h-5 w-5 sm:h-6 sm:w-6" />
+                </div>
+
+                {/* Right: Red box with text */}
+                <div
+                  className={`flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-white text-xs sm:text-sm font-medium transition-colors ${
+                    hoveredSection === 'text' ? 'bg-primary' : hoveredSection === 'plus' ? 'bg-red-600' : 'bg-red-600'
+                  }`}
+                  onMouseEnter={() => setHoveredSection('text')}
+                  onMouseLeave={() => setHoveredSection(null)}
+                >
+                  Daha çox öyrən
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Button box */}
-      <div className="relative lg:absolute lg:z-30 lg:pointer-events-auto lg:inline-flex lg:shadow-lg lg:right-0 lg:md:right-[272px] lg:top-[calc(267px+445px)] mt-4 sm:mt-6 lg:mt-0 flex justify-center lg:justify-start px-4 sm:px-6 lg:px-0">
-        <Link href="/services" className="inline-flex">
-          {/* Left: Blue square with + */}
-          <div
-            className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 text-primary-foreground transition-colors ${
-              hoveredSection === 'plus' ? 'bg-red-600' : hoveredSection === 'text' ? 'bg-primary' : 'bg-primary'
-            }`}
-            onMouseEnter={() => setHoveredSection('plus')}
-            onMouseLeave={() => setHoveredSection(null)}
-          >
-            <Plus className="h-5 w-5 sm:h-6 sm:w-6" />
-          </div>
-          
-          {/* Right: Red box with text */}
-          <div
-            className={`flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-white text-xs sm:text-sm font-medium transition-colors ${
-              hoveredSection === 'text' ? 'bg-primary' : hoveredSection === 'plus' ? 'bg-red-600' : 'bg-red-600'
-            }`}
-            onMouseEnter={() => setHoveredSection('text')}
-            onMouseLeave={() => setHoveredSection(null)}
-          >
-            Daha çox öyrən
-          </div>
-        </Link>
-      </div>
-
       {/* Spacer */}
-      <div className="h-[200px] sm:h-[240px] md:h-[280px] lg:h-[320px]" />
+      <div className="h-[40px] sm:h-[60px] md:h-[80px] lg:h-[100px]" />
     </section>
   )
 }

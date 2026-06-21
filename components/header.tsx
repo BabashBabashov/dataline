@@ -42,15 +42,16 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+        {/* Mobile: 320x104 area with white background */}
+        <div className="flex items-center justify-between h-[52px] md:h-16">
+          {/* Logo - 73x50 on mobile */}
           <Link href="/" className="flex items-center flex-shrink-0" aria-label="Dataline MMC home">
             <Image
               src="/images/logo.png"
               alt="Dataline MMC Logo"
-              width={200}
-              height={80}
-              className="h-10 md:h-14 w-auto"
+              width={73}
+              height={50}
+              className="h-[50px] w-[73px] md:h-14 md:w-auto"
               priority
             />
           </Link>
@@ -72,9 +73,9 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - 50x50 */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-accent/10 transition-colors"
+            className="md:hidden w-[50px] h-[50px] flex items-center justify-center rounded-lg hover:bg-accent/10 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Menyunu bağla" : "Menyunu aç"}
             aria-expanded={isMenuOpen}
