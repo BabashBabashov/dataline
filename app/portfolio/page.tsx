@@ -88,8 +88,8 @@ export default function PortfolioPage() {
 
           {/* Logos Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto">
-            {/* Partner logos - 17 items */}
-            {[...Array(17)].map((_, index) => (
+            {/* Partner logos - 29 items */}
+            {[...Array(29)].map((_, index) => (
               <div
                 key={index}
                 className="aspect-square bg-white rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition-all hover:scale-105 p-3 sm:p-4"
