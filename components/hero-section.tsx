@@ -13,7 +13,7 @@ const slides = [
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [hoveredSection, setHoveredSection] = useState<'plus' | 'text' | null>(null)
+  const [hoveredSection, setHoveredSection] = useState<'plus' | 'text' | 'card' | null>(null)
   const [cardVisible, setCardVisible] = useState(false)
 
   useEffect(() => {
@@ -85,59 +85,85 @@ export function HeroSection() {
       {/* Navy strip */}
       <div className="h-[10px] sm:h-[15px] bg-primary w-full lg:w-[calc(100%-128px)] lg:mr-[128px]" />
 
-      {/* Content Card - below navy strip with slide-up animation */}
-      <div className="relative px-4 sm:px-6 lg:px-0">
-        <div className="overflow-hidden w-full lg:w-[calc(100%-128px)] lg:mr-[128px] mx-auto">
-          <div
-            className={`pointer-events-auto transition-all ${
-              cardVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-16'
-            }`}
-            style={{
-              transitionDuration: '1.2s',
-              transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)',
-            }}
-          >
-            <div className="shadow-2xl" style={{ backgroundColor: '#F2F2F2' }}>
-              <div className="p-6 sm:p-8 md:p-12 text-center flex flex-col justify-center">
+      {/* Content Card - Desktop: overlapping card like About page, Mobile: below navy strip */}
+      <div className="relative lg:absolute z-10 lg:pointer-events-none lg:right-[272px] lg:top-[267px] mt-0 sm:-mt-12 lg:mt-0 px-0 sm:px-6 lg:px-0">
+        <div className="lg:pointer-events-auto">
+          <div className="overflow-hidden w-full sm:max-w-[600px] lg:w-[685px] mx-auto lg:mx-0">
+            <div
+              className={`shadow-2xl transition-all duration-700 ${
+                cardVisible
+                  ? 'opacity-100 translate-y-0 lg:translate-x-0'
+                  : 'opacity-0 translate-y-16 lg:translate-y-0 lg:-translate-x-full'
+              } ${hoveredSection === 'card' ? 'scale-[1.02]' : ''}`}
+              style={{
+                backgroundColor: hoveredSection === 'card' ? '#E8E8E8' : '#F2F2F2',
+                transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)'
+              }}
+              onMouseEnter={() => setHoveredSection('card')}
+              onMouseLeave={() => setHoveredSection(null)}
+            >
+              <div className="p-6 sm:p-8 md:p-12 text-center flex flex-col justify-center min-h-[250px] sm:min-h-[300px] md:min-h-[400px] lg:h-[445px]">
+                <div className="w-12 sm:w-16 h-0.5 bg-primary mb-4 sm:mb-6 mx-auto transition-all duration-300"
+                     style={{ width: hoveredSection === 'card' ? '120px' : '64px' }} />
                 <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-4 text-balance">
                   Dataline xoş gəlmisiniz!
                 </h1>
-
-                <div className="w-12 sm:w-16 h-0.5 bg-primary mb-4 mx-auto" />
 
                 <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                   2015-ci ildə yaradılmış Dataline şirkəti qısa müddət ərzində İT autsorsinq, İT xidmətlərinin göstərilməsi, sistem inteqrasiyası, serverlərin qurulması, nəzarət sistemləri, kommunikasiya üzrə ixtisaslaşıb və öz müştərilərinə xidmət göstərməkdədir. Şirkətimiz yüksək ixtisaslı təcrübəli gənc mütəxəssislərdən təşkil olunmuşdur. Şirkətimizin əsas məqsədi müştərilərə keyfiyyətli İT autsorsinq təklif etməkdir.
                 </p>
               </div>
-            </div>
 
-            {/* Button box - attached to bottom-right of card */}
-            <div className="flex justify-end">
-              <Link href="/services" className="inline-flex shadow-lg">
-                {/* Left: Blue square with + */}
-                <div
-                  className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 text-primary-foreground transition-colors ${
-                    hoveredSection === 'plus' ? 'bg-red-600' : hoveredSection === 'text' ? 'bg-primary' : 'bg-primary'
-                  }`}
-                  onMouseEnter={() => setHoveredSection('plus')}
-                  onMouseLeave={() => setHoveredSection(null)}
-                >
-                  <Plus className="h-5 w-5 sm:h-6 sm:w-6" />
-                </div>
+              {/* Button box - attached to bottom-right of card, desktop only */}
+              <div className="hidden lg:flex justify-end lg:pointer-events-auto">
+                <Link href="/services" className="inline-flex shadow-lg">
+                  {/* Left: Blue square with + */}
+                  <div
+                    className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 text-primary-foreground transition-colors ${
+                      hoveredSection === 'plus' ? 'bg-red-600' : hoveredSection === 'text' ? 'bg-primary' : 'bg-primary'
+                    }`}
+                    onMouseEnter={() => setHoveredSection('plus')}
+                    onMouseLeave={() => setHoveredSection(null)}
+                  >
+                    <Plus className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </div>
 
-                {/* Right: Red box with text */}
-                <div
-                  className={`flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-white text-xs sm:text-sm font-medium transition-colors ${
-                    hoveredSection === 'text' ? 'bg-primary' : hoveredSection === 'plus' ? 'bg-red-600' : 'bg-red-600'
-                  }`}
-                  onMouseEnter={() => setHoveredSection('text')}
-                  onMouseLeave={() => setHoveredSection(null)}
-                >
-                  Daha çox öyrən
-                </div>
-              </Link>
+                  {/* Right: Red box with text */}
+                  <div
+                    className={`flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-white text-xs sm:text-sm font-medium transition-colors ${
+                      hoveredSection === 'text' ? 'bg-primary' : hoveredSection === 'plus' ? 'bg-red-600' : 'bg-red-600'
+                    }`}
+                    onMouseEnter={() => setHoveredSection('text')}
+                    onMouseLeave={() => setHoveredSection(null)}
+                  >
+                    Daha çox öyrən
+                  </div>
+                </Link>
+              </div>
+
+              {/* Mobile button - attached to bottom-right of card, mobile only */}
+              <div className="lg:hidden flex justify-end mt-0">
+                <Link href="/services" className="inline-flex shadow-lg">
+                  <div
+                    className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 text-primary-foreground transition-colors ${
+                      hoveredSection === 'plus' ? 'bg-red-600' : hoveredSection === 'text' ? 'bg-primary' : 'bg-primary'
+                    }`}
+                    onMouseEnter={() => setHoveredSection('plus')}
+                    onMouseLeave={() => setHoveredSection(null)}
+                  >
+                    <Plus className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </div>
+                  <div
+                    className={`flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-white text-xs sm:text-sm font-medium transition-colors ${
+                      hoveredSection === 'text' ? 'bg-primary' : hoveredSection === 'plus' ? 'bg-red-600' : 'bg-red-600'
+                    }`}
+                    onMouseEnter={() => setHoveredSection('text')}
+                    onMouseLeave={() => setHoveredSection(null)}
+                  >
+                    Daha çox öyrən
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
